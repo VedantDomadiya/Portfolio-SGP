@@ -2,7 +2,7 @@ export const METADATA = {
   author: "Vedant Domadiya",
   title: "Portfolio | Vedant Domadiya",
   description:
-    "Vedant Domadiya is a passionate cloud Engineer, dedicated to architect cloud solutions.",
+    "Vedant Domadiya is a B.Tech Computer Engineering Student and a Cloud Enthusiast. He is currently in his final year at Indus University, Ahmedabad. He is a Google Cloud Certified - Associate Cloud Engineer, AWS Certified - Cloud Practioner and a Google Cloud Arcade Facilitator 2024, mentoring over 750 students. He also serves as the Technical Head & Coding Club Lead at his campus and is the Postman Student Leader & AWS Student Club Lead. He is active in multiple tech communities across Ahmedabad and is pursuing additional cloud certifications. His passion lies in cloud technologies and community-driven learning, and he is committed to bridging the gap between academic knowledge and industry-ready skills.",
   siteUrl: "#",
   twitterHandle: "@VedantDomadiya",
   keywords: [
@@ -13,6 +13,16 @@ export const METADATA = {
     "Portfolio",
     "Devfolio",
     "Folio",
+    "B.Tech Computer Engineering Student",
+    "Google Cloud Certified",
+    "Associate Cloud Engineer",
+    "Google Cloud Arcade Facilitator",
+    "Technical Head",
+    "Coding Club Lead",
+    "Postman Student Leader",
+    "AWS Student Club Lead",
+    "Cloud Technologies",
+    "Community-Driven Learning"
   ].join(", "),
   // image:
   //   "https://res.cloudinary.com/dywdhyojt/image/upload/v1721378510/social-preview.png",
@@ -48,9 +58,10 @@ export const MENULINKS = [
 ];
 
 export const TYPED_STRINGS = [
-  "A Programatic Backend Developer",
-  "Cloud Enthusiast",
-  "Aspiring DevOps Engineer",
+  "FY Computer Engineeer Student",
+  "AWS & GCP Certified",
+  "Passionate about Cloud & <br>DevOps Technologies",
+  "Active Contributor to Multiple <br>Tech Communities and Local Groups",
 ];
 
 export const SOCIAL_LINKS = [
@@ -78,29 +89,26 @@ export const SOCIAL_LINKS = [
 
 export const SKILLS = {
   languagesAndTools: [
+    "AWS",
+    "GCP",
     "html",
     "css",
     "javascript",
-    "typescript",
     "sass",
     "nodejs",
     "webpack",
     "vite",
-    "firebase",
-    "figma",
-    "tanstack-query",
   ],
   librariesAndFrameworks: [
     "react",
-    "redux",
     "nextjs",
     "tailwindcss",
-    "styledcomponents",
-    "antdesign",
-    "chakra-ui",
+ 
+ 
+ 
   ],
-  databases: ["mysql", "mongodb"],
-  other: ["git", "sanity-io"],
+  databases: ["mysql", "mongodb" ,"Microsoft SQL Server"],
+  other: ["git", "Github"],
 };
 
 export const PROJECTS = [
