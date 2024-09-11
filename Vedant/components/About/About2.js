@@ -42,7 +42,7 @@ const About2 = ({ clientHeight }) => {
           ref={quoteRef}
           className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center"
         >
-          I'm deeply committed to{" "}
+          I&apos;m deeply committed to{" "}
           <span
             className="about-3 font-bold"
             style={{
