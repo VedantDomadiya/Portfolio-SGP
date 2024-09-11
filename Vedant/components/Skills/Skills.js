@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -54,7 +53,7 @@ const Skills = () => {
               My Skills
             </h1>
             <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
-            I excel in crafting innovative cloud solutions and seamless user experiences using cutting-edge technologies. My expertise spans AWS, GCP, modern frontend frameworks, and robust backend systems.{" "}
+              I excel in crafting innovative cloud solutions and seamless user experiences using cutting-edge technologies. My expertise spans AWS, GCP, modern frontend frameworks, and robust backend systems.
             </h2>
           </div>
           <div className="mt-10">
@@ -71,6 +70,40 @@ const Skills = () => {
                   height={50}
                 />
               ))}
+            </div>
+          </div>
+          <div className="flex flex-wrap mt-10">
+            <div className="mr-16 xs:mr-20 mb-6 staggered-reveal">
+              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
+                CLOUD PROVIDERS
+              </h3>
+              <div className="flex flex-wrap gap-6 transform-gpu">
+                {SKILLS.CloudProviders.map((provider) => (
+                  <Image
+                    key={provider}
+                    src={`/skills/${provider}.svg`}
+                    alt={provider}
+                    width={50}
+                    height={50}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="staggered-reveal">
+              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
+                OPERATING SYSTEMS
+              </h3>
+              <div className="flex flex-wrap gap-6 transform-gpu">
+                {SKILLS.OS.map((os) => (
+                  <Image
+                    key={os}
+                    src={`/skills/${os}.svg`}
+                    alt={os}
+                    width={50}
+                    height={50}
+                  />
+                ))}
+              </div>
             </div>
           </div>
           <div className="mt-10">

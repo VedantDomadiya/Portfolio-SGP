@@ -59,8 +59,8 @@ export const MENULINKS = [
 
 export const TYPED_STRINGS = [
   "FY Computer Engineeer Student",
-  "AWS & GCP Certified",
-  "Passionate about Cloud & <br>DevOps Technologies",
+  "AWS and GCP Certified",
+  "Passionate about Cloud and <br>DevOps Technologies",
   "Active Contributor to Multiple <br>Tech Communities and Local Groups",
 ];
 
@@ -88,27 +88,27 @@ export const SOCIAL_LINKS = [
 ];
 
 export const SKILLS = {
+  CloudProviders: ["AWS","GCP"],
   languagesAndTools: [
-    "AWS",
-    "GCP",
+    "python",
+    "Csharp",
+    "C++",
+    "java",
     "html",
     "css",
     "javascript",
-    "sass",
     "nodejs",
-    "webpack",
     "vite",
   ],
   librariesAndFrameworks: [
+    "asp.net",
     "react",
     "nextjs",
     "tailwindcss",
- 
- 
- 
   ],
-  databases: ["mysql", "mongodb" ,"Microsoft SQL Server"],
-  other: ["git", "Github"],
+  OS: ["linux","windows"],
+  databases: ["mysql", "mongodb" ,"sqlserver"],
+  other: ["git", "github", "postman"],
 };
 
 export const PROJECTS = [
