@@ -1,14 +1,14 @@
 export const METADATA = {
-  author: "Vedant Domadiya",
-  title: "Portfolio | Vedant Domadiya",
+  author: "Rohan Katara",
+  title: "Portfolio | Rohan Katara",
   description:
-    "Vedant Domadiya is a passionate cloud Engineer, dedicated to architect cloud solutions.",
+    "Rohan Katara is a passionate developer, dedicated to fostering innovative solutions.",
   siteUrl: "#",
   twitterHandle: "@VedantDomadiya",
   keywords: [
-    "Vedant Domadiya",
-    "Cloud Engineer",
-    "DevOps Engineer",
+    "Rohan Katara",
+    "Web Developer",
+    "Frontend Developer",
     "Software Engineer",
     "Portfolio",
     "Devfolio",
@@ -38,41 +38,37 @@ export const MENULINKS = [
     ref: "work",
   },
   {
-    name: "Volunteering",
-    ref: "volunteering",
-  },
-  {
     name: "Contact",
     ref: "contact",
   },
 ];
 
 export const TYPED_STRINGS = [
-  "A Programatic Backend Developer",
-  "Cloud Enthusiast",
-  "Aspiring DevOps Engineer",
+  "A Programatic Frontend Developer",
+  "Web Developer",
+  "Aspiring Software Engineer",
 ];
 
 export const SOCIAL_LINKS = [
   {
     name: "mail",
-    url: "mailto: vedantdomadiya1809@gmail.com",
+    url: "mailto: katararohan.21.ce@iite.indusuni.ac.in",
   },
   {
     name: "linkedin",
-    url: "https://www.linkedin.com/in/VedantDomadiya/",
+    url: "#",
   },
   {
     name: "github",
-    url: "https://github.com/VedantDomadiya",
+    url: "#",
   },
   {
     name: "instagram",
-    url: "https://www.instagram.com/vedant_domadiya/",
+    url: "#",
   },
   {
     name: "twitter",
-    url: "https://twitter.com/VedantDomadiya",
+    url: "#",
   },
 ];
 
