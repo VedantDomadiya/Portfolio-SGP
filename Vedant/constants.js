@@ -197,51 +197,50 @@ export const PROJECTS = [
 // ];
 
 export const WORK_CONTENTS = {
-  DUKAAN: [
+  FACILITATOR: [
     {
-      title: "Dukaan",
+      title: "Google Cloud Arcade Facilitator 2024",
       description:
-        "Dukaan is a platform that enables businesses to launch their online stores at ease.",
+        "Google Cloud Community India",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Revolutionizing commerce, one click at a time
+          Helping people grow thier cloud skills
         </div>
       ),
     },
     {
-      title: "Transformation",
-      description:
-        "Since 2023, the Dukaan Seller Dashboard struggled with technical issues and a broken user experience due to accumulated technical debt. Leading a team of two junior developers, we migrated the dashboard from CSR to SSR, redesigned the UI, and overhauled the codebase in the process. This resolved the technical debt and vastly improved the user experience, making it Dukaan's largest and most impactful migration.",
+      title: "Shaping Future Cloud Leaders",
+      description: [
+      <div>
+        <p>• Mentored 750+ students and professionals in building Google Cloud skills, guiding them through their cloud journey.</p>
+        <p>• Enrolled participants in a structured program offering a 2-month Qwiklabs subscription for hands-on cloud computing experience.</p>
+      </div>
+      ],
       content: (
         <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Senior Frontend Engineer
+          Leading individuals on a transformative cloud learning journey.
         </div>
       ),
     },
     {
-      title: "Evolution",
-      description:
-        "Recognizing the need for improved performance and user engagement, I spearheaded the migration of the Dukaan App from native to React-Native for iOS and Android platforms. This strategic move led to a X% enhancement in app performance and a Y% boost in user engagement, representing a significant milestone in the app's evolution.",
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Frontend Engineer
+      title: "Pioneering Cloud Skills",
+      description:[
+        <div>
+          <p>• Designed and implemented gamified learning paths with interactive tasks, leaderboards, and milestones to encourage effective learning.</p>
+          <p>• Facilitated weekly doubt-solving sessions, providing continuous support and motivation through a dedicated WhatsApp community.</p>
+          <p>• Rewarded participants with Google Cloud merchandise upon achieving specific milestones, enhancing engagement and participation.</p>
         </div>
-      ),
-    },
-    {
-      title: "Optimization",
-      description:
-        "Leveraging user feedback and analytics, I improved the seller web dashboard design, reducing bounce rates. Simultaneously, I overhauled the build process, slashing bundle size and boosting overall performance.",
+      ],
       content: (
         <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Frontend Engineer Intern
+          Paving the way for future cloud experts through innovation and engagement.
         </div>
       ),
     },
   ],
-  AVIATE: [
+  SHARVAYA: [
     {
-      title: "Aviate",
+      title: "Sharvaya Infotech",
       description:
         "Aviate is a preparation and mentorship platform for job-seekers that are seeking non-technical roles across top companies",
       content: (
