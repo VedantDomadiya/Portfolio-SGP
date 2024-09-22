@@ -1,12 +1,12 @@
 export const METADATA = {
-  author: "Vedant Domadiya",
-  title: "Portfolio | Vedant Domadiya",
+  author: "Deven Rao",
+  title: "Portfolio | Deven Rao",
   description:
-    "Vedant Domadiya is a passionate cloud Engineer, dedicated to architect cloud solutions.",
+    "Deven Rao is a passionate cloud Engineer, dedicated to architect cloud solutions.",
   siteUrl: "#",
   twitterHandle: "@VedantDomadiya",
   keywords: [
-    "Vedant Domadiya",
+    "Deven Rao",
     "Cloud Engineer",
     "DevOps Engineer",
     "Software Engineer",
@@ -38,17 +38,13 @@ export const MENULINKS = [
     ref: "work",
   },
   {
-    name: "Volunteering",
-    ref: "volunteering",
-  },
-  {
     name: "Contact",
     ref: "contact",
   },
 ];
 
 export const TYPED_STRINGS = [
-  "A Programatic Backend Developer",
+  "A Programatic Web Developer",
   "Cloud Enthusiast",
   "Aspiring DevOps Engineer",
 ];
