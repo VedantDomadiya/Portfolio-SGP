@@ -40,16 +40,12 @@ export const MENULINKS = [
     ref: "skills",
   },
   {
-    name: "Projects",
-    ref: "projects",
+    name: "Certifications",
+    ref: "certifications",
   },
   {
     name: "Work",
     ref: "work",
-  },
-  {
-    name: "Volunteering",
-    ref: "volunteering",
   },
   {
     name: "Contact",
@@ -111,45 +107,84 @@ export const SKILLS = {
   other: ["git", "github", "postman"],
 };
 
-export const PROJECTS = [
+// export const PROJECTS = [
+//   {
+//     name: "Airbnb",
+//     image: "/projects/airbnb.webp",
+//     blurImage: "/projects/blur/airbnb-blur.webp",
+//     description: "Airbnb UI clone using NextJS + Tailwind CSS 🛏️",
+//     gradient: ["#F14658", "#DC2537"],
+//     url: "https://shubh73-airbnb.vercel.app/",
+//     tech: ["react", "nextjs", "tailwindcss", "mapbox"],
+//   },
+//   {
+//     name: "Medium",
+//     image: "/projects/medium.webp",
+//     blurImage: "/projects/blur/medium-blur.webp",
+//     description: "Medium UI clone using NextJS + Tailwind CSS ✍🏻",
+//     gradient: ["#FFA62E", "#EA4D2C"],
+//     url: "https://shubh73-medium.vercel.app/",
+//     tech: ["typescript", "react", "nextjs", "tailwindcss", "sanity.io"],
+//   },
+//   {
+//     name: "Inshorts",
+//     image: "/projects/inshorts.webp",
+//     blurImage: "/projects/blur/airbnb-blur.webp",
+//     description:
+//       "Conversational Voice Controlled React News Application using Alan AI 🎙",
+//     gradient: ["#000066", "#6699FF"],
+//     url: "https://shubh73-inshorts.netlify.app/",
+//     tech: ["react", "chakra-ui", "alan"],
+//   },
+//   {
+//     name: "Tesla",
+//     image: "/projects/tesla.webp",
+//     blurImage: "/projects/blur/tesla-blur.webp",
+//     description: "A Tesla React Native App 🏎️",
+//     gradient: ["#142D46", "#2E4964"],
+//     url: "https://github.com/shubh73/tesla",
+//     tech: ["react"],
+//   },
+// ];
+
+export const CERTIFICATIONS = [
   {
-    name: "Airbnb",
-    image: "/projects/airbnb.webp",
-    blurImage: "/projects/blur/airbnb-blur.webp",
-    description: "Airbnb UI clone using NextJS + Tailwind CSS 🛏️",
-    gradient: ["#F14658", "#DC2537"],
-    url: "https://shubh73-airbnb.vercel.app/",
-    tech: ["react", "nextjs", "tailwindcss", "mapbox"],
+    name: "",
+    image: "/Certifications/ACE_Cert.jpg",  
+    description: "",
+    url: "https://www.credly.com/badges/8e0354b4-7b2f-40f7-85fc-71c5b93b663e/linked_in_profile",
+    tech: ["google-cloud"],  
   },
   {
-    name: "Medium",
-    image: "/projects/medium.webp",
-    blurImage: "/projects/blur/medium-blur.webp",
-    description: "Medium UI clone using NextJS + Tailwind CSS ✍🏻",
-    gradient: ["#FFA62E", "#EA4D2C"],
-    url: "https://shubh73-medium.vercel.app/",
-    tech: ["typescript", "react", "nextjs", "tailwindcss", "sanity.io"],
+    name: "",
+    image: "/Certifications/AWS_Cert.jpg",  
+    description: "",
+    url: "https://www.credly.com/badges/ca94304e-f26e-4bb7-9357-56c69d6a35f0/linked_in_profile",
+    tech: ["aws"],  
   },
   {
-    name: "Inshorts",
-    image: "/projects/inshorts.webp",
-    blurImage: "/projects/blur/airbnb-blur.webp",
-    description:
-      "Conversational Voice Controlled React News Application using Alan AI 🎙",
-    gradient: ["#000066", "#6699FF"],
-    url: "https://shubh73-inshorts.netlify.app/",
-    tech: ["react", "chakra-ui", "alan"],
+    name: "",
+    image: "/Certifications/AWS-ACADEMY_Cert.jpg",  
+    description: "",
+    url: "https://www.credly.com/badges/5b62426f-a81c-46dd-863d-2fd819bd38db/linked_in_profile",
+    tech: ["aws"],  
   },
   {
-    name: "Tesla",
-    image: "/projects/tesla.webp",
-    blurImage: "/projects/blur/tesla-blur.webp",
-    description: "A Tesla React Native App 🏎️",
-    gradient: ["#142D46", "#2E4964"],
-    url: "https://github.com/shubh73/tesla",
-    tech: ["react"],
+    name: "",
+    image: "/Certifications/GFG_Cert.jpg",  
+    description: "",
+    url: "https://drive.google.com/file/d/180K8jA9kwl0W7zIyfhi9DPrKbzP2dU9t/view?usp=drivesdk",
+    tech: ["cloud"],  
+  },
+  {
+    name: "",
+    image: "/Certifications/PSE_Cert.jpeg",  
+    description: "",
+    url: "https://badgr.com/public/assertions/D42MSCEPRKuephVG5MMC1Q?identity__email=vedantdomadiya.21.ce@iite.indusuni.ac.in",
+    tech: ["postman"],  
   },
 ];
+
 
 // export const WORK = [
 //   {
@@ -242,42 +277,20 @@ export const WORK_CONTENTS = {
     {
       title: "Sharvaya Infotech",
       description:
-        "Aviate is a preparation and mentorship platform for job-seekers that are seeking non-technical roles across top companies",
+        "Gain insights into the inner workings of the company and actively identified and addressed shortcomings in the existing ERP system while devising strategies for enhancing the new ERP solution.",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Finding the right job isn&apos;t fate, it&apos;s navigation
+          Asp.Net Developer Intern
         </div>
       ),
     },
     {
-      title: "Innovation",
+      title: "Junior Developer",
       description:
-        "I spearheaded the development of Q-Rate, their flagship product, a voice-based applicant screening platform. Moreover, I took initiatives to enhance user engagement and drive substantial increases in daily traffic. Additionally, I implemented an error-logging and bug reporting system, significantly diminishing user-reported bugs.",
+        "Collaborated directly with Mr. Mrunal Yoddha, the directing manager, to spearhead the development of an ERP portal. My responsibilities encompassed designing and constructing database tables and their corresponding stored procedures, along with the creation of Entity, DAL, and BAL layers for seamless integration with the front-end, utilizing JavaScript and ASP.NET C#. Additionally, I successfully implemented various essential features, including document generation for Job Cards, Quotations, Sales Bills, and introduced new webforms to augment the ERP's functionality.",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Frontend Developer Intern
-        </div>
-      ),
-    },
-  ],
-  SPACENOS: [
-    {
-      title: "Spacenos",
-      description:
-        "A dynamic startup dedicated to creating innovative products that make the world a better place.",
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white px-4">
-          We build apps that solve problems for the next billion people
-        </div>
-      ),
-    },
-    {
-      title: "Trailblazing",
-      description:
-        "I led the comprehensive overhaul of the Admin Portal, implementing CRUD features for all services and providers. Additionally, I architected a feature enabling precise customer location tracking and delivering insightful usage statistics. Through optimized and compressed file serving, I catalyzed a remarkable Yx increase in page speed, resulting in a X% boost in customer retention.",
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Web Developer Intern
+          Junior Backend Developer
         </div>
       ),
     },

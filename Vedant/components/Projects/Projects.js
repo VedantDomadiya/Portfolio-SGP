@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
-import { MENULINKS, PROJECTS } from "../../constants";
+import { MENULINKS, CERTIFICATIONS } from "../../constants";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import ProjectTile from "./ProjectTile/ProjectTile";
+import ProjectTile from "./ProjectTile/ProjectTile";  // Keep using ProjectTile for now
 
-const Projects = ({ isDesktop, clientHeight }) => {
+const Certifications = ({ isDesktop, clientHeight }) => {
   const sectionRef = useRef(null);
   const sectionTitleRef = useRef(null);
 
@@ -93,14 +93,13 @@ const Projects = ({ isDesktop, clientHeight }) => {
           ref={sectionTitleRef}
         >
           <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
-            PROJECTS
+            CERTIFICATIONS
           </p>
           <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
-            My Projects
+            My Certifications
           </h1>
           <h2 className="text-[1.65rem] font-medium md:max-w-lg max-w-sm mt-2 staggered-reveal">
-            Some things I&apos;ve built with love, expertise and a pinch of
-            magical ingredients.{" "}
+          Certifications that reflect my skills and expertise in cloud technologies.
           </h2>
         </div>
         <div
@@ -108,13 +107,13 @@ const Projects = ({ isDesktop, clientHeight }) => {
             clientHeight > 650 ? "mt-12" : "mt-8"
           } flex project-wrapper no-scrollbar w-fit staggered-reveal`}
         >
-          {PROJECTS.map((project, index) => (
+          {CERTIFICATIONS.map((cert, index) => (
             <ProjectTile
               classes={
-                index === PROJECTS.length - 1 ? "" : "mr-10 xs:mr-12 sm:mr-16"
+                index === CERTIFICATIONS.length - 1 ? "" : "mr-10 xs:mr-12 sm:mr-16"
               }
-              project={project}
-              key={project.name}
+              project={cert}  // Ensure it's passed as a cert object
+              key={cert.name}
             />
           ))}
         </div>
@@ -123,4 +122,4 @@ const Projects = ({ isDesktop, clientHeight }) => {
   );
 };
 
-export default Projects;
+export default Certifications;

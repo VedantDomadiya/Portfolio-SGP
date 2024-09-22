@@ -30,16 +30,6 @@ const Work = ({ isDesktop }) => {
           />
         ),
       },
-      {
-        title: "Spacenos",
-        value: "spacenos",
-        content: (
-          <StickyScroll
-            isDesktop={isDesktop}
-            contentItems={WORK_CONTENTS.SPACENOS}
-          />
-        ),
-      },
     ],
     [isDesktop]
   );
