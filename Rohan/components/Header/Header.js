@@ -34,7 +34,7 @@ const Header = ({ children }) => {
         <a href="#home" className="link">
           <Image
             src="/logo.svg"
-            alt="Logo - Vedant Domadiya"
+            alt="Logo - Rohan Katara"
             width={25}
             height={25}
           />

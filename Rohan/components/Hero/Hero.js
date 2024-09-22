@@ -77,15 +77,15 @@ const Hero = () => {
       </style>
       <div className="flex flex-col pt-40 md:pt-0 select-none">
         <h5
-          className={`${styles.intro} font-mono font-medium text-indigo-light staggered-reveal`}
+          className={${styles.intro} font-mono font-medium text-indigo-light staggered-reveal}
         >
           Hi, my name is
         </h5>
-        <h1 className={`${styles.heroName} text-white text-6xl font-semibold`}>
-          <span className={`relative ${styles.emphasize} staggered-reveal`}>
-            Vedant
+        <h1 className={${styles.heroName} text-white text-6xl font-semibold}>
+          <span className={relative ${styles.emphasize} staggered-reveal}>
+            Rohan
           </span>
-          <span className="staggered-reveal"> Domadiya</span>
+          <span className="staggered-reveal"> Katara</span>
         </h1>
         <p>
           <span
@@ -97,7 +97,7 @@ const Hero = () => {
           <Profiles />
         </div>
         <div className="staggered-reveal pt-4">
-          <Button href={`#${MENULINKS[4].ref}`} classes="link" type="primary">
+          <Button href={#${MENULINKS[4].ref}} classes="link" type="primary">
             Let&apos;s Talk
           </Button>
         </div>
