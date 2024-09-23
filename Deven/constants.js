@@ -4,7 +4,7 @@ export const METADATA = {
   description:
     "Deven Rao is a passionate cloud Engineer, dedicated to architect cloud solutions.",
   siteUrl: "#",
-  twitterHandle: "@VedantDomadiya",
+  twitterHandle: "@DevenR23753",
   keywords: [
     "Deven Rao",
     "Cloud Engineer",
@@ -44,7 +44,7 @@ export const MENULINKS = [
 ];
 
 export const TYPED_STRINGS = [
-  "A Programatic Web Developer",
+  "A Progressive Web Developer",
   "Cloud Enthusiast",
   "Aspiring DevOps Engineer",
 ];
@@ -52,19 +52,19 @@ export const TYPED_STRINGS = [
 export const SOCIAL_LINKS = [
   {
     name: "mail",
-    url: "mailto: vedantdomadiya1809@gmail.com",
+    url: "mailto: devenrao36@gmail.com",
   },
   {
     name: "linkedin",
-    url: "https://www.linkedin.com/in/VedantDomadiya/",
+    url: "www.linkedin.com/in/deven-rao-13333a260",
   },
   {
     name: "github",
-    url: "https://github.com/VedantDomadiya",
+    url: "https://github.com/DEVEN1708",
   },
   {
     name: "instagram",
-    url: "https://www.instagram.com/vedant_domadiya/",
+    url: "https://www.instagram.com/deven.rao/",
   },
   {
     name: "twitter",
