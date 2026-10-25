@@ -72,12 +72,11 @@ export const BOOKING_URL = "https://topmate.io/vedant_domadiya";
 
 // Header music button: plays a random track; `clip` tracks fade out after `clip`
 // seconds and the next random track starts automatically; tracks without `clip`
-// play in full. Only add audio you're licensed to publish on a public website
-// (a store purchase is a personal-listening licence, not a streaming one).
+// play in full. Clip files are trimmed to their first 35 seconds.
 export const PLAYLIST = [
+  { title: "Back in Black", artist: "AC/DC", src: "/sounds/back-in-black.m4a", clip: 34 },
+  { title: "Feel It", artist: "d4vd", src: "/sounds/feel-it.m4a", clip: 34 },
   { title: "Site theme", artist: "devfolio", src: "/sounds/song.mp3" },
-  // Example of a 30-second clip track:
-  // { title: "My Track", artist: "Artist", src: "/sounds/my-track.mp3", clip: 30 },
 ];
 
 export const SOCIAL_LINKS = [

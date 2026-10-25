@@ -148,7 +148,8 @@ const SoundBar = () => {
         ref={audioRef}
         preload="none"
         // full-length tracks roll into the next random one when they end
-        onEnded={() => isPlaying && play(nextTrack())}
+        // (clip tracks advance on their own timer)
+        onEnded={() => isPlaying && !lastRef.current?.clip && play(nextTrack())}
       />
     </div>
   );
