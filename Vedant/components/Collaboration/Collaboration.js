@@ -64,7 +64,7 @@ const Collaboration = ({ clientHeight }) => {
         <p className="opacity-40 text-6xl sm:text-7xl font-semibold whitespace-nowrap ui-left transform-gpu">
           {Array(5)
             .fill(
-              " Cloud Infrastructure  Platform Engineering  Infrastructure as Code "
+              " CNCF Ahmedabad · Docker Ahmedabad · AWS User Group Ahmedabad · WordPress Ahmedabad · "
             )
             .reduce((str, el) => str.concat(el), "")}{" "}
         </p>
@@ -92,7 +92,7 @@ const Collaboration = ({ clientHeight }) => {
         <p className="mt-6 md:mt-8 opacity-40 text-6xl sm:text-7xl font-semibold whitespace-nowrap ui-right transform-gpu">
           {Array(5)
             .fill(
-              " Kubernetes  CI/CD Pipelines  Observability  Cost Optimisation "
+              " Google Cloud Arcade · Muse Community · Meetups · Workshops · Hackathons · "
             )
             .reduce((str, el) => str.concat(el), "")}{" "}
         </p>

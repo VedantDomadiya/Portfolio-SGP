@@ -5,10 +5,10 @@ import { cn } from "utils/cn";
 const Tab = ({ index, tab, activeTab, handleOnClick, setIsHovering }) => {
   return (
     <button
-      onMouseDown={() => handleOnClick(index)}
+      onClick={() => handleOnClick(index)}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className="relative px-4 py-1 rounded-full cursor-none"
+      className="relative shrink-0 whitespace-nowrap px-4 py-1 rounded-full cursor-none"
       style={{
         transformStyle: "preserve-3d",
       }}
@@ -80,7 +80,7 @@ const Tabs = ({ tabItems }) => {
 
   return (
     <div className="staggered-reveal">
-      <div className="pt-12 flex flex-row justify-center items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
+      <div className="pt-12 flex flex-row justify-start sm:justify-center items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
         {tabItems.map((tab, index) => (
           <Tab
             key={tab.title}

@@ -56,121 +56,33 @@ const Skills = () => {
               I build and run cloud infrastructure across AWS, Google Cloud and Azure, with Kubernetes, Terraform, CI/CD and observability doing the heavy lifting.
             </h2>
           </div>
-          <div className="mt-10">
-            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">
-              DEVOPS AND CLOUD NATIVE
-            </h3>
-            <div className="flex items-center flex-wrap gap-6 staggered-reveal">
-              {SKILLS.devops.map((skill) => (
-                <Image
-                  key={skill}
-                  src={`/skills/${skill}.svg`}
-                  alt={skill}
-                  width={50}
-                  height={50}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="mt-10">
-            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">
-              LANGUAGES AND TOOLS
-            </h3>
-            <div className="flex items-center flex-wrap gap-6 staggered-reveal">
-              {SKILLS.languagesAndTools.map((skill) => (
-                <Image
-                  key={skill}
-                  src={`/skills/${skill}.svg`}
-                  alt={skill}
-                  width={50}
-                  height={50}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-wrap mt-10">
-            <div className="mr-16 xs:mr-20 mb-6 staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                CLOUD PROVIDERS
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.CloudProviders.map((provider) => (
-                  <Image
-                    key={provider}
-                    src={`/skills/${provider}.svg`}
-                    alt={provider}
-                    width={50}
-                    height={50}
-                  />
-                ))}
+          <div className="mt-12 grid gap-x-16 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
+            {SKILLS.map(({ title, items }) => (
+              <div key={title} className="staggered-reveal">
+                <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
+                  {title}
+                </h3>
+                <ul className="flex flex-wrap gap-x-5 gap-y-4">
+                  {items.map(({ icon, name }) => (
+                    <li
+                      key={icon}
+                      className="flex w-16 flex-col items-center gap-2 transition-transform duration-200 hover:-translate-y-1"
+                    >
+                      <Image
+                        src={`/skills/${icon}.svg`}
+                        alt=""
+                        width={44}
+                        height={44}
+                        className="h-11 w-11 object-contain"
+                      />
+                      <span className="text-center text-xs leading-tight text-gray-light-3">
+                        {name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-            <div className="staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                OPERATING SYSTEMS
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.OS.map((os) => (
-                  <Image
-                    key={os}
-                    src={`/skills/${os}.svg`}
-                    alt={os}
-                    width={50}
-                    height={50}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="mt-10">
-            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">
-              LIBRARIES AND FRAMEWORKS
-            </h3>
-            <div className="flex flex-wrap gap-6 transform-gpu staggered-reveal">
-              {SKILLS.librariesAndFrameworks.map((skill) => (
-                <Image
-                  key={skill}
-                  src={`/skills/${skill}.svg`}
-                  alt={skill}
-                  width={50}
-                  height={50}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-wrap mt-10">
-            <div className="mr-16 xs:mr-20 mb-6 staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                DATABASES
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.databases.map((skill) => (
-                  <Image
-                    key={skill}
-                    src={`/skills/${skill}.svg`}
-                    alt={skill}
-                    width={50}
-                    height={50}
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                Other
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.other.map((skill) => (
-                  <Image
-                    key={skill}
-                    src={`/skills/${skill}.svg`}
-                    alt={skill}
-                    width={50}
-                    height={50}
-                  />
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
