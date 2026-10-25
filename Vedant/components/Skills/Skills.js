@@ -73,7 +73,7 @@ const Skills = () => {
                         alt=""
                         width={44}
                         height={44}
-                        className="h-11 w-11 object-contain"
+                        className="skill-icon h-11 w-11 object-contain"
                       />
                       <span className="text-center text-xs leading-tight text-gray-light-3">
                         {name}

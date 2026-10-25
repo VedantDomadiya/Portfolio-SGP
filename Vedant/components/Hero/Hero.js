@@ -1,9 +1,8 @@
-import { useEffect, useRef, useLayoutEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Typed from "typed.js";
 import gsap from "gsap";
 import Button from "../Button/Button";
 import Profiles from "../Profiles/Profiles";
-import Terminal from "./Terminal";
 import styles from "./Hero.module.scss";
 import { MENULINKS, TYPED_STRINGS, RESUME_URL, BOOKING_URL } from "../../constants";
 
@@ -17,8 +16,11 @@ const options = {
 };
 
 const Hero = () => {
+  const [lottie, setLottie] = useState(null);
+
   const sectionRef = useRef(null);
   const typedElementRef = useRef(null);
+  const lottieRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -40,6 +42,25 @@ const Hero = () => {
 
     return () => typed.destroy();
   }, [typedElementRef]);
+
+  useEffect(() => {
+    import("lottie-web").then((Lottie) => setLottie(Lottie.default));
+  }, []);
+
+  useEffect(() => {
+    if (lottie && lottieRef.current) {
+      const animation = lottie.loadAnimation({
+        container: lottieRef.current,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        // Fetched from /public instead of bundled, so it doesn't weigh down first load
+        path: "/lottie/lottie.json",
+      });
+
+      return () => animation.destroy();
+    }
+  }, [lottie]);
 
   return (
     <section
@@ -100,9 +121,10 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-      <div className="absolute hidden w-5/12 max-w-lg xl:block top-1/2 -translate-y-1/2 xl:right-20 2xl:right-16 staggered-reveal">
-        <Terminal />
-      </div>
+      <div
+        className="absolute invisible w-4/12 bottom-1.5 lg:visible lg:right-12 2xl:right-16"
+        ref={lottieRef}
+      />
     </section>
   );
 };

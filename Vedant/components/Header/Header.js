@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Howl } from "howler";
 import SoundBar from "./SoundBar/SoundBar";
+import ThemeToggle from "./ThemeToggle/ThemeToggle";
 
 const multiPop = new Howl({
   src: ["/sounds/multi-pop.mp3"],
@@ -33,6 +34,7 @@ const Header = ({ children }) => {
       <div className="flex justify-between section-container">
         <a href="#home" className="link">
           <Image
+            className="theme-invert"
             src="/logo.svg"
             alt="Logo - Vedant Domadiya"
             width={25}
@@ -40,6 +42,7 @@ const Header = ({ children }) => {
           />
         </a>
         <div className="outer-menu relative flex items-center gap-8 z-[1]">
+          <ThemeToggle />
           <SoundBar />
           <input
             ref={inputRef}

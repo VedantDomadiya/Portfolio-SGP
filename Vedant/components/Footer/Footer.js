@@ -24,7 +24,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="w-full relative select-none bg-cover"
+      className="theme-dark w-full relative select-none bg-cover"
       style={{
         backgroundImage: `linear-gradient(to right, ${theme.colors.indigo.light}, ${theme.colors.indigo.dark})`,
       }}
@@ -48,19 +48,19 @@ const Footer = () => {
                 Let&apos;s Talk
               </Button>
             </div>
-            <p className="text-center text-white text-sm sm:text-base font-medium tracking-wide mt-8">
+            <p className="text-center text-snow text-sm sm:text-base font-medium tracking-wide mt-8">
               Developed with{" "}
               <button onClick={handleClick} className="link cursor-none">
                 <span className="block animate-bounce">❤️</span>
               </button>{" "}
-              by <span className="text-white">Vedant Domadiya</span>
+              by <span className="text-snow">Vedant Domadiya</span>
             </p>
           </div>
         </div>
       </Fade>
       <img
         src="/footer-curve.svg"
-        className="w-full rotate-180"
+        className="theme-invert w-full rotate-180"
         alt=""
         loading="eager"
         height={180}

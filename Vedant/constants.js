@@ -70,16 +70,28 @@ export const RESUME_URL =
 
 export const BOOKING_URL = "https://topmate.io/vedant_domadiya";
 
-// Hero terminal, same voice as the link hub at vedantdomadiya.com/linkhub
-export const TERMINAL_LINES = [
-  { command: "whoami", output: "devops & platform engineer @ techlusion.io" },
+// Header music player. Spotify tracks use the official embed (full track for listeners
+// signed in to Spotify, a 30-second preview otherwise); "src" tracks are self-hosted files.
+// Only add self-hosted audio you have the rights to publish.
+export const PLAYLIST = [
   {
-    command: "kubectl get certs -n vedant",
-    output: "6 certifications Ready: gcp-pca, aws-saa, kcna, az-900, gcp-ace, aws-ccp",
+    id: "shoot-to-thrill",
+    title: "Shoot to Thrill",
+    artist: "AC/DC",
+    uri: "spotify:track:0C80GCp0mMuBzLf3EAXqxv",
   },
-  { command: "terraform plan", output: "No changes. Let's build something." },
-  { command: "git blame prod.yaml", output: "it was me. it's always me." },
-  { command: "uptime", output: "load average: coffee, coffee, coffee" },
+  {
+    id: "feel-it",
+    title: "Feel It",
+    artist: "d4vd",
+    uri: "spotify:track:3SAga35lAPYdjj3qyfEsCF",
+  },
+  {
+    id: "site-theme",
+    title: "Site theme",
+    artist: "Plays in full for everyone",
+    src: "/sounds/song.mp3",
+  },
 ];
 
 export const SOCIAL_LINKS = [
@@ -206,6 +218,7 @@ export const SKILLS = [
 ];
 
 export const CERTIFICATIONS = [
+  // Professional, then associate, then foundational
   {
     name: "Professional Cloud Architect",
     issuer: "Google Cloud",
@@ -221,6 +234,13 @@ export const CERTIFICATIONS = [
     url: "https://www.credly.com/badges/c7f5c9b9-c6ec-4659-b131-d1598ee3d09e",
   },
   {
+    name: "Associate Cloud Engineer",
+    issuer: "Google Cloud",
+    year: 2024,
+    badge: "/Certifications/badges/gcp-ace.png",
+    url: "https://www.credly.com/badges/8e0354b4-7b2f-40f7-85fc-71c5b93b663e",
+  },
+  {
     name: "Kubernetes and Cloud Native Associate (KCNA)",
     issuer: "The Linux Foundation",
     year: 2026,
@@ -233,13 +253,6 @@ export const CERTIFICATIONS = [
     year: 2025,
     badge: "/Certifications/badges/az-900.svg",
     url: "https://learn.microsoft.com/en-us/users/vedantdomadiya-6787/credentials/39d0da008a53893c",
-  },
-  {
-    name: "Associate Cloud Engineer",
-    issuer: "Google Cloud",
-    year: 2024,
-    badge: "/Certifications/badges/gcp-ace.png",
-    url: "https://www.credly.com/badges/8e0354b4-7b2f-40f7-85fc-71c5b93b663e",
   },
   {
     name: "Cloud Practitioner",
@@ -334,7 +347,7 @@ export const WORK_CONTENTS = {
       title: "DevOps and Platform Engineer",
       description: "Techlusion.io, Ahmedabad. Making deploys boring and cloud bills smaller: shipping faster, scaling smoother, spending less.",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">Techlusion.io</p>
           <p className="mt-2 opacity-80">Oct 2026 – Present</p>
         </div>
@@ -348,7 +361,7 @@ export const WORK_CONTENTS = {
       title: "Electromech Cloudtech",
       description: "Ahmedabad. Grew from Linux / Cloud Intern (Dec 2024) to DevOps Intern (Mar 2025) to DevOps Engineer (Jun 2025 – Jul 2026).",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">DevOps Engineer</p>
           <p className="mt-2 opacity-80">Dec 2024 – Jul 2026</p>
         </div>
@@ -364,7 +377,7 @@ export const WORK_CONTENTS = {
         </div>,
       ],
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">AWS · EKS · WAF</p>
         </div>
       ),
@@ -379,7 +392,7 @@ export const WORK_CONTENTS = {
         </div>,
       ],
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">Terraform · Jenkins · GitHub Actions</p>
         </div>
       ),
@@ -393,7 +406,7 @@ export const WORK_CONTENTS = {
         </div>,
       ],
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">Prometheus · Grafana · RabbitMQ · Kafka</p>
         </div>
       ),
@@ -404,7 +417,7 @@ export const WORK_CONTENTS = {
       title: "Google Cloud Arcade Facilitator",
       description: "Google Cloud Community India. Facilitator for the 2024, 2025 and 2026 cohorts.",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">Facilitator</p>
           <p className="mt-2 opacity-80">Jul 2024 – Present</p>
         </div>
@@ -419,7 +432,7 @@ export const WORK_CONTENTS = {
         </div>,
       ],
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           4,000+ learners mentored
         </div>
       ),
@@ -434,7 +447,7 @@ export const WORK_CONTENTS = {
         </div>,
       ],
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           Gamified learning paths and weekly doubt-solving sessions
         </div>
       ),
@@ -445,7 +458,7 @@ export const WORK_CONTENTS = {
       title: "Ahmedabad tech communities",
       description: "Core team member of CNCF Ahmedabad, Docker Ahmedabad, AWS User Group Ahmedabad and WordPress Ahmedabad: organising meetups, workshops and conferences.",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           Core team
         </div>
       ),
@@ -454,7 +467,7 @@ export const WORK_CONTENTS = {
       title: "Muse Community",
       description: "Community Manager.",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           Community Manager
         </div>
       ),
@@ -463,7 +476,7 @@ export const WORK_CONTENTS = {
       title: "Campus leadership",
       description: "Technical Head, Postman Student Leader and AWS Students Club Lead at IITE, Indus University.",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           IITE, Indus University
         </div>
       ),
@@ -474,7 +487,7 @@ export const WORK_CONTENTS = {
       title: "Full-stack Developer Intern",
       description: "YesbhautikX.",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">YesbhautikX</p>
           <p className="mt-2 opacity-80">Dec 2023 – Feb 2024</p>
         </div>
@@ -484,7 +497,7 @@ export const WORK_CONTENTS = {
       title: "Open source contributor",
       description: "GirlScript Summer of Code and Social Summer of Code (Hack2skill).",
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">GSSoC and SSOC</p>
           <p className="mt-2 opacity-80">May 2023 – Jul 2023</p>
         </div>
@@ -500,7 +513,7 @@ export const WORK_CONTENTS = {
         </div>,
       ],
       content: (
-        <div className="h-full w-full flex flex-col items-center justify-center text-center text-white px-4">
+        <div className="h-full w-full flex flex-col items-center justify-center text-center text-snow px-4">
           <p className="text-xl font-semibold">Sharvaya Infotech</p>
           <p className="mt-2 opacity-80">Dec 2022 – Aug 2023</p>
         </div>

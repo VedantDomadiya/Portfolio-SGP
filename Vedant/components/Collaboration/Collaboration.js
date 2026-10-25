@@ -78,7 +78,7 @@ const Collaboration = ({ clientHeight }) => {
             className="text-strong font-semibold"
             style={{
               background:
-                "linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #8b31ff 51%, #7000ff 102%)",
+                "linear-gradient(90deg, rgb(var(--c-fg)) 0%, rgb(var(--c-fg)) 50%, #8b31ff 51%, #7000ff 102%)",
               backgroundSize: "200% 100%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",

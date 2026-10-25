@@ -388,7 +388,7 @@ const Contact = () => {
         input:focus,
         textarea:active,
         textarea:focus {
-          box-shadow: 0 0 0.3rem #000000;
+          box-shadow: 0 0 0.3rem rgb(var(--c-bg));
         }
 
         input:focus + label,

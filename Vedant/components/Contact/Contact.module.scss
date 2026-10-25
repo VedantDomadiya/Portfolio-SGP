@@ -1,8 +1,8 @@
 .button {
-  --primary: #000000;
+  --primary: rgb(var(--c-bg));
   --primary-dark: #9f55ff;
   --shadow: #{rgba(#9f55ff, 0.3)};
-  --text: #fff;
+  --text: rgb(var(--c-fg));
   --text-opacity: 1;
   --success: #eeecff;
   --success-x: -12;

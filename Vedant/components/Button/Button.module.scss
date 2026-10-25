@@ -10,7 +10,7 @@
   padding: 0.65rem 1.75rem;
   background-clip: padding-box;
   border-radius: 0.4rem;
-  color: #fff;
+  color: rgb(var(--c-fg));
   background-size: 220%;
   outline: 2px solid theme("colors.indigo.dark");
   background-image: linear-gradient(
@@ -61,9 +61,9 @@
   padding: 0.65rem 1.75rem;
   background-clip: padding-box;
   border-radius: 0.4rem;
-  color: #fff;
+  color: rgb(var(--c-fg));
   background-size: 220%;
-  outline: 2px solid #fff;
+  outline: 2px solid rgb(var(--c-fg));
   background-image: linear-gradient(
     120deg,
     transparent 0%,
