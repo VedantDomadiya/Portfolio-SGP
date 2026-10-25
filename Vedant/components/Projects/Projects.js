@@ -16,13 +16,15 @@ const ProjectLink = ({ href, children }) => (
 );
 
 // Flip card: front = number, name, tagline, tech; back = description and links.
-// Flips on hover and keyboard focus (desktop) or tap (touch).
+// Flips on hover and keyboard focus (desktop) or tap (touch). Hover is read from the
+// <li>, which never rotates: if the rotating face itself were the hover target, it
+// would turn edge-on mid-flip, lose the pointer and flap back and forth.
 const ProjectCard = ({ project, index }) => {
   const { name, tagline, description, tech, github, live } = project;
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <li className="project-card h-[20rem] [transform-style:preserve-3d]">
+    <li className="project-card group/card h-[20rem] [transform-style:preserve-3d]">
       <div
         tabIndex={0}
         // Touch screens flip on tap; mouse users flip on hover
@@ -30,7 +32,7 @@ const ProjectCard = ({ project, index }) => {
           window.matchMedia("(hover: none)").matches && setFlipped((f) => !f)
         }
         onKeyDown={(e) => e.key === "Enter" && setFlipped((f) => !f)}
-        className={`link group relative h-full w-full rounded-2xl outline-none transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] [transform-style:preserve-3d] motion-reduce:transition-none lg:hover:[transform:rotateY(180deg)] [&:focus-visible]:[transform:rotateY(180deg)] [&:has(:focus-visible)]:[transform:rotateY(180deg)] ${
+        className={`link relative h-full w-full rounded-2xl outline-none transition-transform duration-[1100ms] ease-[cubic-bezier(0.45,0.05,0.25,1)] [transform-style:preserve-3d] motion-reduce:transition-none lg:group-hover/card:[transform:rotateY(180deg)] [&:focus-visible]:[transform:rotateY(180deg)] [&:has(:focus-visible)]:[transform:rotateY(180deg)] ${
           flipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
