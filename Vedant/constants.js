@@ -70,28 +70,32 @@ export const RESUME_URL =
 
 export const BOOKING_URL = "https://topmate.io/vedant_domadiya";
 
-// Header music button: one click plays, the next pauses; tracks shuffle and roll on
-// automatically. Only self-hosted audio we're licensed to publish goes here.
+// Header music button. Each press of "play" starts the NEXT song's chosen section
+// (start/end in seconds); pressing again stops it. Commercial songs play through
+// YouTube's official embed, which must stay visible while playing (YouTube API terms),
+// so a small player card shows only during playback. Never self-host commercial songs.
 export const PLAYLIST = [
-  { title: "Exhilarate", artist: "Kevin MacLeod", src: "/sounds/playlist/exhilarate.m4a" },
-  { title: "Ready Aim Fire", artist: "Kevin MacLeod", src: "/sounds/playlist/ready-aim-fire.m4a" },
-  { title: "Big Rock", artist: "Kevin MacLeod", src: "/sounds/playlist/big-rock.m4a" },
-  { title: "Shiny Tech", artist: "Kevin MacLeod", src: "/sounds/playlist/shiny-tech.m4a" },
-  { title: "Movement Proposition", artist: "Kevin MacLeod", src: "/sounds/playlist/movement-proposition.m4a" },
-  { title: "Site theme", artist: "devfolio", src: "/sounds/song.mp3" },
-];
-
-// CC BY 4.0 requires this credit to stay visible (shown in the footer)
-export const MUSIC_CREDIT = {
-  text: "Music: Exhilarate, Ready Aim Fire, Big Rock, Shiny Tech and Movement Proposition by Kevin MacLeod (incompetech.com)",
-  licenseName: "CC BY 4.0",
-  licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
-};
-
-// Songs Vedant loves but can't self-host (copyright): linked, not played
-export const SPOTIFY_PICKS = [
-  { title: "Shoot to Thrill", artist: "AC/DC", url: "https://open.spotify.com/track/0C80GCp0mMuBzLf3EAXqxv" },
-  { title: "Feel It", artist: "d4vd", url: "https://open.spotify.com/track/3SAga35lAPYdjj3qyfEsCF" },
+  {
+    title: "Back in Black",
+    artist: "AC/DC",
+    youtubeId: "9vWNauaZAgg", // AC/DC - Topic (album audio, 4:15)
+    start: 0,
+    end: 20,
+  },
+  {
+    title: "Feel It",
+    artist: "d4vd",
+    youtubeId: "3hgabcFcp4A", // d4vd - Topic (album audio, 2:38)
+    start: 0,
+    end: 30,
+  },
+  {
+    title: "Site theme",
+    artist: "devfolio",
+    src: "/sounds/song.mp3",
+    start: 0,
+    end: 30,
+  },
 ];
 
 export const SOCIAL_LINKS = [
@@ -281,6 +285,7 @@ export const OTHER_CERTIFICATIONS = [
 export const PROJECTS = [
   {
     name: "Sajag",
+    tagline: "Voice AI scam shield",
     description:
       "Voice AI scam shield. Listens to a phone call in Gujarati, Hindi or English and warns out loud, in the listener's language, the moment it sounds like a digital-arrest, fake-KYC or courier scam.",
     tech: ["Gemini", "Python", "Cloud Run"],
@@ -288,6 +293,7 @@ export const PROJECTS = [
   },
   {
     name: "Auto-Healing Monitoring System",
+    tagline: "Self-healing observability",
     description:
       "Self-healing observability stack (MAPE-K). Prometheus detects the fault, Alertmanager routes it and a Python webhook fixes it through the Docker or Kubernetes API: about a minute from failure to recovery, no human in the loop.",
     tech: ["Prometheus", "Grafana", "Python", "Kubernetes"],
@@ -296,6 +302,7 @@ export const PROJECTS = [
   },
   {
     name: "EKS Landing Zone",
+    tagline: "Production EKS, all Terraform",
     description:
       "Production-grade AWS EKS cluster provisioned entirely with Terraform and deployed by GitHub Actions, with networking, autoscaling, persistent storage and add-ons.",
     tech: ["Terraform", "EKS", "GitHub Actions"],
@@ -303,6 +310,7 @@ export const PROJECTS = [
   },
   {
     name: "Multi-State Server Monitoring",
+    tagline: "Air-gapped Prometheus + Grafana",
     description:
       "Prometheus and Grafana rolled out to air-gapped state deployments of 7–9 Linux and Windows servers each, with offline installers for node, Windows, RabbitMQ, Kafka and MySQL exporters.",
     tech: ["Prometheus", "Grafana", "Air-gapped"],
@@ -311,6 +319,7 @@ export const PROJECTS = [
   },
   {
     name: "Google Cloud Arcade Calculator",
+    tagline: "Live tool for Arcade learners",
     description:
       "Points and swag-tier calculator for Arcade participants, with an admin console and SEO guides. Built with a volunteer contributor; I run and host it.",
     tech: ["Next.js", "Cloudflare Pages", "KV"],
@@ -318,6 +327,7 @@ export const PROJECTS = [
   },
   {
     name: "Hardened AMI Pipeline",
+    tagline: "CIS-hardened golden images",
     description:
       "CIS-benchmark hardened AWS AMI built with Packer and Ansible, ready to be consumed by Terraform.",
     tech: ["Packer", "Ansible", "Terraform"],
@@ -325,6 +335,7 @@ export const PROJECTS = [
   },
   {
     name: "Krishna AI",
+    tagline: "Gita-guided chatbot",
     description:
       "Chatbot that answers with guidance from verses of the Bhagavad Gita, containerised with Docker Compose.",
     tech: ["AI", "Docker Compose"],
@@ -332,6 +343,7 @@ export const PROJECTS = [
   },
   {
     name: "vedantdomadiya.com",
+    tagline: "Link hub, status page, curl card",
     description:
       "Link hub, parody cloud status page and a terminal business card (try curl vedantdomadiya.com), served from Cloudflare Pages with a Pages Function.",
     tech: ["Cloudflare Pages", "Edge Functions"],

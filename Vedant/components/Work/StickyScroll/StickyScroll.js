@@ -57,6 +57,7 @@ const StickyScroll = ({ contentItems }) => {
 
       <motion.div
         ref={containerRef}
+        data-lenis-prevent
         animate={{
           backgroundColor:
             backgroundColors[activeCard % backgroundColors.length],

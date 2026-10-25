@@ -323,6 +323,7 @@ const Contact = () => {
             <div className="relative mt-14">
               <textarea
                 id="message"
+                data-lenis-prevent
                 className="block w-full h-auto min-h-[10rem] max-h-[20rem] sm:h-14 py-2 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200"
                 value={formData.message}
                 onChange={handleChange}

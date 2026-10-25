@@ -35,6 +35,34 @@ export default function Home() {
     displayFancyLogs();
   }, []);
 
+  // Smooth, inertia-style scrolling (Lenis) driven by GSAP's ticker so pinned
+  // ScrollTrigger sections stay in sync. Skipped for reduced-motion visitors.
+  useEffect(() => {
+    if (
+      isLoading ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
+
+    let lenis;
+    let tick;
+    let cancelled = false;
+    import("lenis").then(({ default: Lenis }) => {
+      if (cancelled) return;
+      lenis = new Lenis({ lerp: 0.1, anchors: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      tick = (time) => lenis.raf(time * 1000);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+    });
+
+    return () => {
+      cancelled = true;
+      if (tick) gsap.ticker.remove(tick);
+      lenis?.destroy();
+    };
+  }, [isLoading]);
+
   useEffect(() => {
     const { innerWidth, innerHeight, orientation, history } = window;
 

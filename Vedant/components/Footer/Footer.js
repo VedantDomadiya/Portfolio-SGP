@@ -7,7 +7,7 @@ import FooterBg from "./FooterBg/FooterBg";
 import Profiles from "../Profiles/Profiles";
 import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 import { theme } from "tailwind.config";
-import { MENULINKS, SPOTIFY_PICKS, MUSIC_CREDIT } from "../../constants";
+import { MENULINKS } from "../../constants";
 
 const Footer = () => {
   const [playbackRate, setPlaybackRate] = useState(0.75);
@@ -60,34 +60,6 @@ const Footer = () => {
                 className="inline-block h-10 w-10 rounded-full bg-snow/90 align-middle -mt-1"
               />{" "}
               by <span className="text-snow">Vedant Domadiya</span>
-            </p>
-            <p className="mt-6 text-center text-sm text-snow/90">
-              My picks on Spotify:{" "}
-              {SPOTIFY_PICKS.map(({ title, artist, url }, index) => (
-                <span key={url}>
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link underline underline-offset-4 hover:text-snow"
-                  >
-                    {title} ({artist})
-                  </a>
-                  {index < SPOTIFY_PICKS.length - 1 ? " · " : ""}
-                </span>
-              ))}
-            </p>
-            <p className="mt-2 max-w-xl text-center text-xs text-snow/70">
-              {MUSIC_CREDIT.text}, licensed under{" "}
-              <a
-                href={MUSIC_CREDIT.licenseUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="link underline underline-offset-2"
-              >
-                {MUSIC_CREDIT.licenseName}
-              </a>
-              .
             </p>
           </div>
         </div>
