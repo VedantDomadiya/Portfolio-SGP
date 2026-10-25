@@ -113,7 +113,7 @@ const Certifications = ({ isDesktop, clientHeight }) => {
                 index === CERTIFICATIONS.length - 1 ? "" : "mr-10 xs:mr-12 sm:mr-16"
               }
               project={cert}  // Ensure it's passed as a cert object
-              key={cert.name}
+              key={cert.url}
             />
           ))}
         </div>

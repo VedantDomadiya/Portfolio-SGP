@@ -53,9 +53,9 @@ const About2 = ({ clientHeight }) => {
               WebkitTextFillColor: "transparent",
             }}
           >
-            precision
+            reliable
           </span>{" "}
-          in cloud solutions and{" "}
+          infrastructure and{" "}
           <span
             className="about-3 font-bold"
             style={{

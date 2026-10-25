@@ -53,8 +53,24 @@ const Skills = () => {
               My Skills
             </h1>
             <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
-              I excel in crafting innovative cloud solutions and seamless user experiences using cutting-edge technologies. My expertise spans AWS, GCP, modern frontend frameworks, and robust backend systems.
+              I build and run cloud infrastructure across AWS, Google Cloud and Azure, with Kubernetes, Terraform, CI/CD and observability doing the heavy lifting.
             </h2>
+          </div>
+          <div className="mt-10">
+            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">
+              DEVOPS AND CLOUD NATIVE
+            </h3>
+            <div className="flex items-center flex-wrap gap-6 staggered-reveal">
+              {SKILLS.devops.map((skill) => (
+                <Image
+                  key={skill}
+                  src={`/skills/${skill}.svg`}
+                  alt={skill}
+                  width={50}
+                  height={50}
+                />
+              ))}
+            </div>
           </div>
           <div className="mt-10">
             <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">

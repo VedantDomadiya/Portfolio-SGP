@@ -56,10 +56,10 @@ const About1 = ({ clientHeight }) => {
           className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center"
         >
           <span className="about-1 leading-tight">
-            I&apos;m a passionate Cloud Engineer and community leader, passionate about bridging academic knowledge with industry skills.{" "}
+            I&apos;m a DevOps and Platform Engineer who makes deploys boring and cloud bills smaller.{" "}
           </span>
           <span className="about-2 leading-tight">
-          Actively contributing to tech communities, he empowers future innovators.{" "}
+            Outside work, I help run tech communities across Ahmedabad and mentor people starting out in cloud.{" "}
           </span>
         </h1>
       </div>

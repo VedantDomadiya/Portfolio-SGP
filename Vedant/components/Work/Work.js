@@ -11,6 +11,26 @@ const Work = ({ isDesktop }) => {
   const tabItems = useMemo(
     () => [
       {
+        title: "Techlusion",
+        value: "Techlusion",
+        content: (
+          <StickyScroll
+            isDesktop={isDesktop}
+            contentItems={WORK_CONTENTS.TECHLUSION}
+          />
+        ),
+      },
+      {
+        title: "Electromech",
+        value: "Electromech",
+        content: (
+          <StickyScroll
+            isDesktop={isDesktop}
+            contentItems={WORK_CONTENTS.ELECTROMECH}
+          />
+        ),
+      },
+      {
         title: "Google Cloud",
         value: "Google Cloud",
         content: (

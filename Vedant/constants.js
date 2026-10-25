@@ -2,27 +2,28 @@ export const METADATA = {
   author: "Vedant Domadiya",
   title: "Portfolio | Vedant Domadiya",
   description:
-    "Vedant Domadiya is a B.Tech Computer Engineering Student and a Cloud Enthusiast. He is currently in his final year at Indus University, Ahmedabad. He is a Google Cloud Certified - Associate Cloud Engineer, AWS Certified - Cloud Practioner and a Google Cloud Arcade Facilitator 2024, mentoring over 750 students. He also serves as the Technical Head & Coding Club Lead at his campus and is the Postman Student Leader & AWS Student Club Lead. He is active in multiple tech communities across Ahmedabad and is pursuing additional cloud certifications. His passion lies in cloud technologies and community-driven learning, and he is committed to bridging the gap between academic knowledge and industry-ready skills.",
-  siteUrl: "#",
+    "Vedant Domadiya is a DevOps & Platform Engineer at Techlusion.io, based in Ahmedabad, India. He builds and runs cloud infrastructure on AWS, Google Cloud and Azure with Kubernetes, Terraform and CI/CD, and focuses on making deploys boring and cloud bills smaller. He is a Google Cloud Certified Associate Cloud Engineer, AWS Certified Cloud Practitioner, Microsoft Certified Azure Fundamentals and CNCF KCNA holder. Outside work he helps run tech communities across Ahmedabad: he is a Google Cloud Arcade facilitator who has mentored 4,000+ learners and a Community Manager at Muse.",
+  siteUrl: "https://vedantdomadiya.vercel.app",
   twitterHandle: "@VedantDomadiya",
   keywords: [
     "Vedant Domadiya",
-    "Cloud Engineer",
     "DevOps Engineer",
-    "Software Engineer",
-    "Portfolio",
-    "Devfolio",
-    "Folio",
-    "B.Tech Computer Engineering Student",
-    "Google Cloud Certified",
+    "Platform Engineer",
+    "Cloud Engineer",
+    "Techlusion",
+    "Ahmedabad",
+    "Kubernetes",
+    "Terraform",
+    "AWS",
+    "Google Cloud",
+    "Azure",
+    "CI/CD",
+    "Observability",
     "Associate Cloud Engineer",
+    "KCNA",
     "Google Cloud Arcade Facilitator",
-    "Technical Head",
-    "Coding Club Lead",
-    "Postman Student Leader",
-    "AWS Student Club Lead",
-    "Cloud Technologies",
-    "Community-Driven Learning"
+    "Muse Community",
+    "Portfolio",
   ].join(", "),
   // image:
   //   "https://res.cloudinary.com/dywdhyojt/image/upload/v1721378510/social-preview.png",
@@ -54,16 +55,16 @@ export const MENULINKS = [
 ];
 
 export const TYPED_STRINGS = [
-  "FY Computer Engineeer Student",
-  "AWS and GCP Certified",
-  "Passionate about Cloud and <br>DevOps Technologies",
-  "Active Contributor to Multiple <br>Tech Communities and Local Groups",
+  "DevOps and Platform Engineer <br>@ Techlusion.io",
+  "I make deploys boring <br>and cloud bills smaller",
+  "Google Cloud, AWS, Azure <br>and KCNA certified",
+  "Google Cloud Arcade Facilitator, <br>4,000+ learners mentored",
 ];
 
 export const SOCIAL_LINKS = [
   {
     name: "mail",
-    url: "mailto: vedantdomadiya1809@gmail.com",
+    url: "mailto:vedantdomadiya1809@gmail.com",
   },
   {
     name: "linkedin",
@@ -79,31 +80,37 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "twitter",
-    url: "https://twitter.com/VedantDomadiya",
+    url: "https://x.com/VedantDomadiya",
   },
 ];
 
 export const SKILLS = {
-  CloudProviders: ["AWS","GCP"],
+  CloudProviders: ["AWS", "GCP", "azure"],
+  devops: [
+    "docker",
+    "kubernetes",
+    "terraform",
+    "ansible",
+    "jenkins",
+    "githubactions",
+    "argocd",
+    "prometheus",
+    "grafana",
+    "nginx",
+  ],
   languagesAndTools: [
+    "bash",
     "python",
+    "javascript",
+    "nodejs",
     "Csharp",
-    "C++",
     "java",
     "html",
     "css",
-    "javascript",
-    "nodejs",
-    "vite",
   ],
-  librariesAndFrameworks: [
-    "asp.net",
-    "react",
-    "nextjs",
-    "tailwindcss",
-  ],
-  OS: ["linux","windows"],
-  databases: ["mysql", "mongodb" ,"sqlserver"],
+  librariesAndFrameworks: ["asp.net", "react", "nextjs", "tailwindcss"],
+  OS: ["linux", "windows"],
+  databases: ["mysql", "mongodb", "sqlserver"],
   other: ["git", "github", "postman"],
 };
 
@@ -232,14 +239,39 @@ export const CERTIFICATIONS = [
 // ];
 
 export const WORK_CONTENTS = {
-  FACILITATOR: [
+  // TODO: expand Techlusion and Electromech with dates and highlights from LinkedIn.
+  TECHLUSION: [
     {
-      title: "Google Cloud Arcade Facilitator 2024",
+      title: "Techlusion.io",
       description:
-        "Google Cloud Community India",
+        "DevOps and Platform Engineer. Making deploys boring and cloud bills smaller: shipping faster, scaling smoother, spending less.",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Helping people grow thier cloud skills
+          DevOps and Platform Engineer
+        </div>
+      ),
+    },
+  ],
+  ELECTROMECH: [
+    {
+      title: "Electromech CloudTech",
+      description:
+        "DevOps Engineer. Shipped observability and infrastructure automation.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white px-4">
+          DevOps Engineer
+        </div>
+      ),
+    },
+  ],
+  FACILITATOR: [
+    {
+      title: "Google Cloud Arcade Facilitator",
+      description:
+        "Google Cloud Community India. 4,000+ learners mentored across cohorts since 2024.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white px-4">
+          Helping people grow their cloud skills
         </div>
       ),
     },
@@ -297,4 +329,6 @@ export const WORK_CONTENTS = {
   ],
 };
 
-export const GTAG = "G-5HCTL2TJ5W";
+// The template this site started from shipped its author's GA4 ID here, so visits were
+// reported to someone else's Analytics. Set your own measurement ID (or leave empty to disable).
+export const GTAG = process.env.NEXT_PUBLIC_GA_ID || "";
