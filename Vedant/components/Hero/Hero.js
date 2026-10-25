@@ -3,8 +3,9 @@ import Typed from "typed.js";
 import gsap from "gsap";
 import Button from "../Button/Button";
 import Profiles from "../Profiles/Profiles";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 import styles from "./Hero.module.scss";
-import { MENULINKS, TYPED_STRINGS } from "../../constants";
+import { MENULINKS, TYPED_STRINGS, RESUME_URL, BOOKING_URL } from "../../constants";
 
 const options = {
   strings: TYPED_STRINGS,
@@ -54,7 +55,8 @@ const Hero = () => {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        animationData: require("../../public/lottie/lottie.json"),
+        // Fetched from /public instead of bundled, so it doesn't weigh down first load
+        path: "/lottie/lottie.json",
       });
 
       return () => animation.destroy();
@@ -96,12 +98,34 @@ const Hero = () => {
         <div className="staggered-reveal">
           <Profiles />
         </div>
-        <div className="staggered-reveal pt-4">
-          <Button href={`#${MENULINKS[4].ref}`} classes="link" type="primary">
+        <div className="staggered-reveal pt-4 flex flex-wrap gap-4">
+          <Button href={`#${MENULINKS[5].ref}`} classes="link" type="primary">
             Let&apos;s Talk
+          </Button>
+          <Button
+            href={RESUME_URL}
+            classes="link"
+            type="secondary"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Resume
+          </Button>
+          <Button
+            href={BOOKING_URL}
+            classes="link"
+            type="secondary"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Book a 1:1
           </Button>
         </div>
       </div>
+      <LottiePlayer
+        src="/lottie/scroll-mouse.json"
+        className="theme-invert absolute bottom-6 left-1/2 h-12 w-6 -translate-x-1/2 opacity-70"
+      />
       <div
         className="absolute invisible w-4/12 bottom-1.5 lg:visible lg:right-12 2xl:right-16"
         ref={lottieRef}

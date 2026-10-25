@@ -10,8 +10,13 @@ module.exports = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      white: "#ffffff",
-      black: "#000000",
+      // white/black/gray follow the theme (see :root and html.light in globals.scss),
+      // so "white" means "foreground" and "black" means "background".
+      white: "rgb(var(--c-fg) / <alpha-value>)",
+      black: "rgb(var(--c-bg) / <alpha-value>)",
+      // Fixed colours for text on purple/gradient surfaces in both themes
+      snow: "#ffffff",
+      ink: "#000000",
       purple: "#8b31ff",
       red: "#cf0000",
       green: "#00ac56",
@@ -21,17 +26,17 @@ module.exports = {
       },
       gray: {
         light: {
-          1: "#f0f0f0",
-          2: "#dbdbdb",
-          3: "#aaaaaa",
-          4: "#8a8a8a",
+          1: "rgb(var(--c-gl1) / <alpha-value>)",
+          2: "rgb(var(--c-gl2) / <alpha-value>)",
+          3: "rgb(var(--c-gl3) / <alpha-value>)",
+          4: "rgb(var(--c-gl4) / <alpha-value>)",
         },
         dark: {
-          1: "#323133",
-          2: "#242225",
-          3: "#1e1b20",
-          4: "#1a171e",
-          5: "#120e16",
+          1: "rgb(var(--c-gd1) / <alpha-value>)",
+          2: "rgb(var(--c-gd2) / <alpha-value>)",
+          3: "rgb(var(--c-gd3) / <alpha-value>)",
+          4: "rgb(var(--c-gd4) / <alpha-value>)",
+          5: "rgb(var(--c-gd5) / <alpha-value>)",
         },
       },
     },

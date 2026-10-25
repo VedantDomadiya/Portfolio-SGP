@@ -3,6 +3,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { MENULINKS, SKILLS } from "../../constants";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 
 const Skills = () => {
   const sectionRef = useRef(null);
@@ -45,116 +46,50 @@ const Skills = () => {
           width={320}
         />
         <div className="flex flex-col skills-wrapper">
-          <div className="flex flex-col">
-            <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
-              SKILLS
-            </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
-              My Skills
-            </h1>
-            <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
-              I excel in crafting innovative cloud solutions and seamless user experiences using cutting-edge technologies. My expertise spans AWS, GCP, modern frontend frameworks, and robust backend systems.
-            </h2>
+          <div className="flex items-center justify-between gap-10">
+            <div className="flex flex-col">
+              <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
+                SKILLS
+              </p>
+              <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+                My Skills
+              </h1>
+              <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
+                I build and run cloud infrastructure across AWS, Google Cloud and Azure, with Kubernetes, Terraform, CI/CD and observability doing the heavy lifting.
+              </h2>
+            </div>
+            <LottiePlayer
+              src="/lottie/cloud-sync.json"
+              className="hidden lg:block h-64 w-48 shrink-0 mr-[12%] staggered-reveal"
+            />
           </div>
-          <div className="mt-10">
-            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">
-              LANGUAGES AND TOOLS
-            </h3>
-            <div className="flex items-center flex-wrap gap-6 staggered-reveal">
-              {SKILLS.languagesAndTools.map((skill) => (
-                <Image
-                  key={skill}
-                  src={`/skills/${skill}.svg`}
-                  alt={skill}
-                  width={50}
-                  height={50}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-wrap mt-10">
-            <div className="mr-16 xs:mr-20 mb-6 staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                CLOUD PROVIDERS
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.CloudProviders.map((provider) => (
-                  <Image
-                    key={provider}
-                    src={`/skills/${provider}.svg`}
-                    alt={provider}
-                    width={50}
-                    height={50}
-                  />
-                ))}
+          <div className="mt-12 grid gap-x-16 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
+            {SKILLS.map(({ title, items }) => (
+              <div key={title} className="staggered-reveal">
+                <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
+                  {title}
+                </h3>
+                <ul className="flex flex-wrap gap-x-5 gap-y-4">
+                  {items.map(({ icon, name }) => (
+                    <li
+                      key={icon}
+                      className="flex w-16 flex-col items-center gap-2 transition-transform duration-200 hover:-translate-y-1"
+                    >
+                      <Image
+                        src={`/skills/${icon}.svg`}
+                        alt=""
+                        width={44}
+                        height={44}
+                        className="skill-icon h-11 w-11 object-contain"
+                      />
+                      <span className="text-center text-xs leading-tight text-gray-light-3">
+                        {name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-            <div className="staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                OPERATING SYSTEMS
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.OS.map((os) => (
-                  <Image
-                    key={os}
-                    src={`/skills/${os}.svg`}
-                    alt={os}
-                    width={50}
-                    height={50}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="mt-10">
-            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">
-              LIBRARIES AND FRAMEWORKS
-            </h3>
-            <div className="flex flex-wrap gap-6 transform-gpu staggered-reveal">
-              {SKILLS.librariesAndFrameworks.map((skill) => (
-                <Image
-                  key={skill}
-                  src={`/skills/${skill}.svg`}
-                  alt={skill}
-                  width={50}
-                  height={50}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-wrap mt-10">
-            <div className="mr-16 xs:mr-20 mb-6 staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                DATABASES
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.databases.map((skill) => (
-                  <Image
-                    key={skill}
-                    src={`/skills/${skill}.svg`}
-                    alt={skill}
-                    width={50}
-                    height={50}
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="staggered-reveal">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
-                Other
-              </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu">
-                {SKILLS.other.map((skill) => (
-                  <Image
-                    key={skill}
-                    src={`/skills/${skill}.svg`}
-                    alt={skill}
-                    width={50}
-                    height={50}
-                  />
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

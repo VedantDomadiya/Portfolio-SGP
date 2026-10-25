@@ -1,125 +1,171 @@
-import { useEffect, useRef } from "react";
-import { MENULINKS, CERTIFICATIONS } from "../../constants";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import ProjectTile from "./ProjectTile/ProjectTile";  // Keep using ProjectTile for now
+import { MENULINKS, PROJECTS } from "../../constants";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 
-const Certifications = ({ isDesktop, clientHeight }) => {
+const ProjectLink = ({ href, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    className="link rounded-full bg-snow/15 px-4 py-1.5 font-mono text-sm text-snow hover:bg-snow/25"
+  >
+    {children} ↗
+  </a>
+);
+
+// Flip card: front = number, name, tagline, tech; back = description and links.
+// Flips on hover and keyboard focus (desktop) or tap (touch). Hover is read from the
+// <li>, which never rotates: if the rotating face itself were the hover target, it
+// would turn edge-on mid-flip, lose the pointer and flap back and forth.
+const ProjectCard = ({ project, index }) => {
+  const { name, tagline, description, tech, github, live } = project;
+  const [flipped, setFlipped] = useState(false);
+
+  return (
+    <li className="project-card group/card h-[20rem] [transform-style:preserve-3d]">
+      <div
+        tabIndex={0}
+        // Touch screens flip on tap; mouse users flip on hover
+        onClick={() =>
+          window.matchMedia("(hover: none)").matches && setFlipped((f) => !f)
+        }
+        onKeyDown={(e) => e.key === "Enter" && setFlipped((f) => !f)}
+        className={`link relative h-full w-full rounded-2xl outline-none transition-transform duration-[1100ms] ease-[cubic-bezier(0.45,0.05,0.25,1)] [transform-style:preserve-3d] motion-reduce:transition-none lg:group-hover/card:[transform:rotateY(180deg)] [&:focus-visible]:[transform:rotateY(180deg)] [&:has(:focus-visible)]:[transform:rotateY(180deg)] ${
+          flipped ? "[transform:rotateY(180deg)]" : ""
+        }`}
+      >
+        <div className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl bg-gray-dark-4 p-6 outline outline-1 outline-gray-dark-1 [backface-visibility:hidden]">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-indigo-dark/20 blur-3xl" />
+          <span className="font-mono text-5xl font-bold text-gray-dark-1">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div>
+            <h3 className="text-3xl font-medium text-white">{name}</h3>
+            <p className="mt-1 text-gradient w-fit font-medium">{tagline}</p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {tech.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-full px-3 py-1 font-mono text-xs text-gray-light-2 outline outline-1 outline-gray-dark-1"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 font-mono text-xs text-gray-light-4">
+              <span className="hidden lg:inline">Hover</span>
+              <span className="lg:hidden">Tap</span> to flip ↻
+            </p>
+          </div>
+        </div>
+        <div className="absolute inset-0 flex flex-col justify-between rounded-2xl bg-gradient-to-br from-indigo-dark/90 to-purple/80 p-6 text-snow [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          <div>
+            <h3 className="text-2xl font-medium">{name}</h3>
+            <p className="mt-3 text-base leading-relaxed text-snow/90">
+              {description}
+            </p>
+          </div>
+          <div className="flex gap-5" onClick={(e) => e.stopPropagation()}>
+            {github && <ProjectLink href={github}>GitHub</ProjectLink>}
+            {live && <ProjectLink href={live}>Live</ProjectLink>}
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};
+
+const Projects = () => {
   const sectionRef = useRef(null);
-  const sectionTitleRef = useRef(null);
 
+  // useEffect (not useLayoutEffect) so this trigger is created after the pinned
+  // Certifications section above it; otherwise its start/end ignore the pin spacing.
   useEffect(() => {
-    let projectsScrollTrigger;
-    let projectsTimeline;
+    const ctx = gsap.context(() => {
+      const tl = gsap
+        .timeline({ defaults: { ease: "none" } })
+        .from(
+          sectionRef.current.querySelectorAll(".staggered-reveal"),
+          { opacity: 0, duration: 0.5, stagger: 0.5 },
+          "<"
+        );
 
-    if (isDesktop) {
-      [projectsTimeline, projectsScrollTrigger] = getProjectsSt();
-    } else {
-      const projectWrapper =
-        sectionRef.current.querySelector(".project-wrapper");
-      projectWrapper.style.width = "calc(100vw - 1rem)";
-      projectWrapper.style.overflowX = "scroll";
-    }
-
-    const [revealTimeline, revealScrollTrigger] = getRevealSt();
-
-    return () => {
-      projectsScrollTrigger && projectsScrollTrigger.kill();
-      projectsTimeline && projectsTimeline.kill();
-      revealScrollTrigger && revealScrollTrigger.kill();
-      revealTimeline && revealTimeline.progress(1);
-    };
-  }, [sectionRef, sectionTitleRef, isDesktop]);
-
-  const getRevealSt = () => {
-    const revealTl = gsap.timeline({ defaults: { ease: "none" } });
-
-    revealTl.from(
-      sectionRef.current.querySelectorAll(".staggered-reveal"),
-      { opacity: 0, duration: 0.5, stagger: 0.5 },
-      "<"
-    );
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top bottom",
-      end: "bottom bottom",
-      scrub: 0,
-      animation: revealTl,
+      ScrollTrigger.create({
+        trigger: sectionRef.current.querySelector(".projects-wrapper"),
+        start: "100px bottom",
+        end: "center center",
+        scrub: 0,
+        animation: tl,
+      });
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.from(sectionRef.current.querySelectorAll(".project-card"), {
+          rotateY: -80,
+          opacity: 0,
+          y: 40,
+          transformOrigin: "left center",
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: sectionRef.current.querySelector(".project-grid"),
+            start: "top 85%",
+            once: true,
+          },
+        });
+      }
     });
 
-    return [revealTl, scrollTrigger];
-  };
-
-  const getProjectsSt = () => {
-    const timeline = gsap.timeline({ defaults: { ease: "none" } });
-    const sidePadding =
-      document.body.clientWidth -
-      sectionRef.current.querySelector(".inner-container").clientWidth;
-    const elementWidth =
-      sidePadding +
-      sectionRef.current.querySelector(".project-wrapper").clientWidth;
-    sectionRef.current.style.width = `${elementWidth}px`;
-    const width = window.innerWidth - elementWidth;
-    const duration = `${(elementWidth / window.innerHeight) * 100}%`;
-    timeline
-      .to(sectionRef.current, { x: width })
-      .to(sectionTitleRef.current, { x: -width }, "<");
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      end: duration,
-      scrub: 0,
-      pin: true,
-      animation: timeline,
-      pinSpacing: "margin",
-    });
-
-    return [timeline, scrollTrigger];
-  };
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      id={MENULINKS[2].ref}
-      className={`${
-        isDesktop && "min-h-screen"
-      } w-full relative select-none section-container transform-gpu`}
+      id={MENULINKS[3].ref}
+      className="w-full relative select-none mt-40"
     >
-      <div className="flex flex-col py- justify-center h-full">
-        <div
-          className="flex flex-col inner-container transform-gpu"
-          ref={sectionTitleRef}
-        >
-          <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
-            CERTIFICATIONS
-          </p>
-          <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
-            My Certifications
-          </h1>
-          <h2 className="text-[1.65rem] font-medium md:max-w-lg max-w-sm mt-2 staggered-reveal">
-          Certifications that reflect my skills and expertise in cloud technologies.
-          </h2>
-        </div>
-        <div
-          className={`${
-            clientHeight > 650 ? "mt-12" : "mt-8"
-          } flex project-wrapper no-scrollbar w-fit staggered-reveal`}
-        >
-          {CERTIFICATIONS.map((cert, index) => (
-            <ProjectTile
-              classes={
-                index === CERTIFICATIONS.length - 1 ? "" : "mr-10 xs:mr-12 sm:mr-16"
-              }
-              project={cert}  // Ensure it's passed as a cert object
-              key={cert.name}
+      <div className="section-container py-16 flex flex-col justify-center">
+        <div className="flex flex-col projects-wrapper">
+          <div className="flex items-end justify-between gap-10">
+            <div className="flex flex-col">
+              <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
+                PROJECTS
+              </p>
+              <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+                Things I&apos;ve Built
+              </h1>
+              <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
+                Infrastructure, observability and the odd AI side project.
+              </h2>
+            </div>
+            <LottiePlayer
+              src="/lottie/rocket-deploy.json"
+              className="hidden md:block h-56 w-56 shrink-0 xl:mr-[8%] staggered-reveal"
             />
-          ))}
+          </div>
+          <ul className="project-grid mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3 [perspective:1600px]">
+            {PROJECTS.map((project, index) => (
+              <ProjectCard key={project.name} project={project} index={index} />
+            ))}
+          </ul>
+          <p className="mt-8 text-gray-light-3 staggered-reveal">
+            More on{" "}
+            <a
+              href="https://github.com/VedantDomadiya"
+              target="_blank"
+              rel="noreferrer"
+              className="link text-white underline underline-offset-4"
+            >
+              GitHub
+            </a>
+            .
+          </p>
         </div>
       </div>
     </section>
   );
 };
 
-export default Certifications;
+export default Projects;

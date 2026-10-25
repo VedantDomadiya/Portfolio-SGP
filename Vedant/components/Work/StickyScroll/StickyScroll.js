@@ -32,7 +32,7 @@ const StickyScroll = ({ contentItems }) => {
     setActiveCard(closestBreakpointIndex);
   });
 
-  const backgroundColors = ["#000000"];
+  const backgroundColors = ["rgb(var(--c-bg))"];
   const linearGradients = [
     "linear-gradient(to bottom right, #ef008f, #6ec3f4)",
     "linear-gradient(to bottom right, #6ec3f4, #7038ff)",
@@ -57,6 +57,7 @@ const StickyScroll = ({ contentItems }) => {
 
       <motion.div
         ref={containerRef}
+        data-lenis-prevent
         animate={{
           backgroundColor:
             backgroundColors[activeCard % backgroundColors.length],
@@ -74,21 +75,21 @@ const StickyScroll = ({ contentItems }) => {
                   animate={{
                     opacity: activeCard === index ? 1 : 0.3,
                   }}
-                  className="text-2xl font-bold text-slate-100"
+                  className="text-2xl font-bold text-white"
                 >
                   {item.title}
                 </motion.h2>
-                <motion.p
+                <motion.div
                   initial={{
                     opacity: 0,
                   }}
                   animate={{
                     opacity: activeCard === index ? 1 : 0.3,
                   }}
-                  className="text-lg text-slate-300 max-w-sm mt-4"
+                  className="text-lg text-gray-light-2 max-w-sm mt-4"
                 >
                   {item.description}
-                </motion.p>
+                </motion.div>
               </div>
             ))}
             <div className="h-40" />

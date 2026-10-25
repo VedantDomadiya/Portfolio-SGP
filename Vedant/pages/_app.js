@@ -1,6 +1,7 @@
 import { calibre, jetbrains_mono } from "public/fonts";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Meta from "@/components/Meta/Meta";
+import "lenis/dist/lenis.css";
 import "../styles/globals.scss";
 import { GTAG } from "constants";
 
@@ -12,7 +13,7 @@ const App = ({ Component, pageProps }) => {
         className={`${calibre.variable} font-sans ${jetbrains_mono.variable} font-mono`}
       >
         <Component {...pageProps} />
-        <GoogleAnalytics gaId={GTAG} />
+        {GTAG && <GoogleAnalytics gaId={GTAG} />}
       </main>
     </>
   );

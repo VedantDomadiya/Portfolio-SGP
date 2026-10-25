@@ -5,6 +5,7 @@ import { Howl } from "howler";
 import Button from "../Button/Button";
 import FooterBg from "./FooterBg/FooterBg";
 import Profiles from "../Profiles/Profiles";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 import { theme } from "tailwind.config";
 import { MENULINKS } from "../../constants";
 
@@ -24,7 +25,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="w-full relative select-none bg-cover"
+      className="theme-dark w-full relative select-none bg-cover"
       style={{
         backgroundImage: `linear-gradient(to right, ${theme.colors.indigo.light}, ${theme.colors.indigo.dark})`,
       }}
@@ -41,26 +42,31 @@ const Footer = () => {
             </div>
             <div className="pt-4 text-center">
               <Button
-                href={`#${MENULINKS[4].ref}`}
+                href={`#${MENULINKS[5].ref}`}
                 classes="link"
                 type="secondary"
               >
                 Let&apos;s Talk
               </Button>
             </div>
-            <p className="text-center text-white text-sm sm:text-base font-medium tracking-wide mt-8">
+            <p className="text-center text-snow text-sm sm:text-base font-medium tracking-wide mt-8">
               Developed with{" "}
               <button onClick={handleClick} className="link cursor-none">
                 <span className="block animate-bounce">❤️</span>
               </button>{" "}
-              by <span className="text-white">Vedant Domadiya</span>
+              and{" "}
+              <LottiePlayer
+                src="/lottie/coffee.json"
+                className="inline-block h-10 w-10 rounded-full bg-snow/90 align-middle -mt-1"
+              />{" "}
+              by <span className="text-snow">Vedant Domadiya</span>
             </p>
           </div>
         </div>
       </Fade>
       <img
         src="/footer-curve.svg"
-        className="w-full rotate-180"
+        className="theme-invert w-full rotate-180"
         alt=""
         loading="eager"
         height={180}

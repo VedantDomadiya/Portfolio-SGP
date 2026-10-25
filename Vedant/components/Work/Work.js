@@ -9,28 +9,23 @@ const Work = ({ isDesktop }) => {
   const sectionRef = useRef(null);
 
   const tabItems = useMemo(
-    () => [
-      {
-        title: "Google Cloud",
-        value: "Google Cloud",
+    () =>
+      [
+        ["Techlusion", "TECHLUSION"],
+        ["Electromech", "ELECTROMECH"],
+        ["Google Cloud", "FACILITATOR"],
+        ["Community", "COMMUNITY"],
+        ["Earlier", "EARLIER"],
+      ].map(([title, key]) => ({
+        title,
+        value: title,
         content: (
           <StickyScroll
             isDesktop={isDesktop}
-            contentItems={WORK_CONTENTS.FACILITATOR}
+            contentItems={WORK_CONTENTS[key]}
           />
         ),
-      },
-      {
-        title: "Sharvaya",
-        value: "Sharvaya",
-        content: (
-          <StickyScroll
-            isDesktop={isDesktop}
-            contentItems={WORK_CONTENTS.SHARVAYA}
-          />
-        ),
-      },
-    ],
+      })),
     [isDesktop]
   );
 
@@ -59,7 +54,7 @@ const Work = ({ isDesktop }) => {
   return (
     <section
       ref={sectionRef}
-      id={MENULINKS[3].ref}
+      id={MENULINKS[4].ref}
       className="w-full relative select-none xs:mt-40 sm:mt-72 mb-96"
     >
       <img

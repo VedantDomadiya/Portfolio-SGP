@@ -64,7 +64,7 @@ const Collaboration = ({ clientHeight }) => {
         <p className="opacity-40 text-6xl sm:text-7xl font-semibold whitespace-nowrap ui-left transform-gpu">
           {Array(5)
             .fill(
-              " Software Engineering Problem Solving Software Architecture "
+              " CNCF Ahmedabad · Docker Ahmedabad · AWS User Group Ahmedabad · WordPress Ahmedabad · "
             )
             .reduce((str, el) => str.concat(el), "")}{" "}
         </p>
@@ -78,7 +78,7 @@ const Collaboration = ({ clientHeight }) => {
             className="text-strong font-semibold"
             style={{
               background:
-                "linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #8b31ff 51%, #7000ff 102%)",
+                "linear-gradient(90deg, rgb(var(--c-fg)) 0%, rgb(var(--c-fg)) 50%, #8b31ff 51%, #7000ff 102%)",
               backgroundSize: "200% 100%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -92,7 +92,7 @@ const Collaboration = ({ clientHeight }) => {
         <p className="mt-6 md:mt-8 opacity-40 text-6xl sm:text-7xl font-semibold whitespace-nowrap ui-right transform-gpu">
           {Array(5)
             .fill(
-              " Agile Development Frontend Development React Native Development "
+              " Google Cloud Arcade · Muse Community · Meetups · Workshops · Hackathons · "
             )
             .reduce((str, el) => str.concat(el), "")}{" "}
         </p>

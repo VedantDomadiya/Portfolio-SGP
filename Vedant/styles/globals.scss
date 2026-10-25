@@ -11,6 +11,57 @@
   cursor: none;
 }
 
+// Theme tokens as RGB triplets (used by tailwind.config.js colors).
+// Dark is the default; ThemeToggle adds .light to <html>.
+@mixin dark-tokens {
+  --c-bg: 0 0 0;
+  --c-fg: 255 255 255;
+  --c-gl1: 240 240 240;
+  --c-gl2: 219 219 219;
+  --c-gl3: 170 170 170;
+  --c-gl4: 138 138 138;
+  --c-gd1: 50 49 51;
+  --c-gd2: 36 34 37;
+  --c-gd3: 30 27 32;
+  --c-gd4: 26 23 30;
+  --c-gd5: 18 14 22;
+}
+
+:root {
+  @include dark-tokens;
+  color-scheme: dark;
+}
+
+html.light {
+  --c-bg: 250 248 255;
+  --c-fg: 20 16 28;
+  --c-gl1: 36 31 46;
+  --c-gl2: 58 53 70;
+  --c-gl3: 88 83 102;
+  --c-gl4: 118 113 132;
+  --c-gd1: 221 216 233;
+  --c-gd2: 233 229 243;
+  --c-gd3: 240 237 248;
+  --c-gd4: 255 255 255;
+  --c-gd5: 244 241 251;
+  color-scheme: light;
+
+  .theme-invert {
+    filter: invert(1);
+  }
+
+  // Surfaces that stay dark in both themes (e.g. the purple footer)
+  .theme-dark {
+    @include dark-tokens;
+    color: rgb(var(--c-fg));
+  }
+
+  // White logos (Next.js, GitHub) need an edge on the light background
+  .skill-icon {
+    filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.45));
+  }
+}
+
 html {
   scroll-behavior: smooth;
   -ms-overflow-style: scrollbar;
@@ -40,6 +91,7 @@ html {
 body {
   box-sizing: border-box;
   @apply bg-black text-white overflow-x-hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::-webkit-scrollbar {
@@ -219,7 +271,7 @@ input[type="checkbox"] {
       opacity: 0;
       height: 0;
       width: 0;
-      background: #fff;
+      background: rgb(var(--c-fg));
       border-radius: 100%;
       transition: all 0.2s ease-in-out;
     }
@@ -232,7 +284,7 @@ input[type="checkbox"] {
       }
 
       > span {
-        background: #000;
+        background: rgb(var(--c-bg));
       }
     }
   }
@@ -248,12 +300,7 @@ input[type="checkbox"] {
       border-radius: 50%;
       transition: all 0.4s ease;
       backface-visibility: hidden;
-      background: rgba(
-        0,
-        0,
-        0,
-        0.8
-      ); //check it out later when more text is on the background to change the opacity
+      background: rgb(var(--c-bg) / 0.85);
       // @supports not (backdrop-filter: blur(0.625rem)) {
       //   background: rgba(0, 0, 0, 0.8);
       // }
@@ -267,8 +314,8 @@ input[type="checkbox"] {
           a {
             background: linear-gradient(
               90deg,
-              #ffffff 0%,
-              #ffffff 50%,
+              rgb(var(--c-fg)) 0%,
+              rgb(var(--c-fg)) 50%,
               #8b31ff 51%,
               #7000ff 100%
             );

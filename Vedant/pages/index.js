@@ -10,6 +10,7 @@ import Hero from "@/components/Hero/Hero";
 import About1 from "@/components/About/About1";
 import Skills from "@/components/Skills/Skills";
 import About2 from "@/components/About/About2";
+import Certifications from "@/components/Certifications/Certifications";
 import Projects from "@/components/Projects/Projects";
 import Work from "@/components/Work/Work";
 import Collaboration from "@/components/Collaboration/Collaboration";
@@ -33,6 +34,34 @@ export default function Home() {
 
     displayFancyLogs();
   }, []);
+
+  // Smooth, inertia-style scrolling (Lenis) driven by GSAP's ticker so pinned
+  // ScrollTrigger sections stay in sync. Skipped for reduced-motion visitors.
+  useEffect(() => {
+    if (
+      isLoading ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
+
+    let lenis;
+    let tick;
+    let cancelled = false;
+    import("lenis").then(({ default: Lenis }) => {
+      if (cancelled) return;
+      lenis = new Lenis({ lerp: 0.1, anchors: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      tick = (time) => lenis.raf(time * 1000);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+    });
+
+    return () => {
+      cancelled = true;
+      if (tick) gsap.ticker.remove(tick);
+      lenis?.destroy();
+    };
+  }, [isLoading]);
 
   useEffect(() => {
     const { innerWidth, innerHeight, orientation, history } = window;
@@ -70,7 +99,8 @@ export default function Home() {
             <About1 clientHeight={clientHeight} />
             <Skills />
             <About2 clientHeight={clientHeight} />
-            <Projects isDesktop={isDesktop} clientHeight={clientHeight} />
+            <Certifications isDesktop={isDesktop} clientHeight={clientHeight} />
+            <Projects />
             <Work isDesktop={isDesktop} />
             <Collaboration clientHeight={clientHeight} />
             <Contact />
