@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { MENULINKS, PROJECTS } from "../../constants";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 
 const ProjectLink = ({ href, children }) => (
   <a
@@ -49,16 +50,22 @@ const Projects = () => {
     >
       <div className="section-container py-16 flex flex-col justify-center">
         <div className="flex flex-col projects-wrapper">
-          <div className="flex flex-col">
-            <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
-              PROJECTS
-            </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
-              Things I&apos;ve Built
-            </h1>
-            <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
-              Infrastructure, observability and the odd AI side project.
-            </h2>
+          <div className="flex items-end justify-between gap-10">
+            <div className="flex flex-col">
+              <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
+                PROJECTS
+              </p>
+              <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+                Things I&apos;ve Built
+              </h1>
+              <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
+                Infrastructure, observability and the odd AI side project.
+              </h2>
+            </div>
+            <LottiePlayer
+              src="/lottie/rocket-deploy.json"
+              className="hidden md:block h-56 w-56 shrink-0 xl:mr-[8%] staggered-reveal"
+            />
           </div>
           <ul className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {PROJECTS.map(({ name, description, tech, github, live }) => (

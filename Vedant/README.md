@@ -28,3 +28,16 @@ Vercel → Project → Settings → Environment Variables (then redeploy, becaus
 ## Credits
 
 Based on [devfolio](https://github.com/shubh73/devfolio) by Shubh Porwal (MIT).
+
+## Animations and music
+
+- Lottie animations in `public/lottie/` (rendered by `components/LottiePlayer`): `lottie.json` came with the
+  devfolio template; the rest are free LottieFiles animations under the Lottie Simple License:
+  [rocket launch](https://lottiefiles.com/free-animation/startup-business-rocket-launch-animation-for-website-24g7jyKA0H),
+  [PC to cloud server](https://lottiefiles.com/free-animation/pc-to-cloud-server-o3qAJebwu3),
+  [letter to paper plane](https://lottiefiles.com/free-animation/letter-turns-into-paper-plane-and-flies-away-NmNBTibGSk),
+  [cup of coffee](https://lottiefiles.com/free-animation/cup-of-coffee-cnMpFnUDxV),
+  [mouse scroll](https://lottiefiles.com/free-animation/mouse-scroll-C4qcXXec3s).
+- Music button tracks in `public/sounds/playlist/` are by Kevin MacLeod (incompetech.com), CC BY 4.0. The credit
+  in the footer (`MUSIC_CREDIT` in `constants.js`) must stay. Don't add commercial songs as files: link them
+  (`SPOTIFY_PICKS`) instead.

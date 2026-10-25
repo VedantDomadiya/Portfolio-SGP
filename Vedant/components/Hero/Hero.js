@@ -3,6 +3,7 @@ import Typed from "typed.js";
 import gsap from "gsap";
 import Button from "../Button/Button";
 import Profiles from "../Profiles/Profiles";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 import styles from "./Hero.module.scss";
 import { MENULINKS, TYPED_STRINGS, RESUME_URL, BOOKING_URL } from "../../constants";
 
@@ -121,6 +122,10 @@ const Hero = () => {
           </Button>
         </div>
       </div>
+      <LottiePlayer
+        src="/lottie/scroll-mouse.json"
+        className="theme-invert absolute bottom-6 left-1/2 h-12 w-6 -translate-x-1/2 opacity-70"
+      />
       <div
         className="absolute invisible w-4/12 bottom-1.5 lg:visible lg:right-12 2xl:right-16"
         ref={lottieRef}

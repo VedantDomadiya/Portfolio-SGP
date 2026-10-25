@@ -3,6 +3,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { MENULINKS, SKILLS } from "../../constants";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 
 const Skills = () => {
   const sectionRef = useRef(null);
@@ -45,16 +46,22 @@ const Skills = () => {
           width={320}
         />
         <div className="flex flex-col skills-wrapper">
-          <div className="flex flex-col">
-            <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
-              SKILLS
-            </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
-              My Skills
-            </h1>
-            <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
-              I build and run cloud infrastructure across AWS, Google Cloud and Azure, with Kubernetes, Terraform, CI/CD and observability doing the heavy lifting.
-            </h2>
+          <div className="flex items-center justify-between gap-10">
+            <div className="flex flex-col">
+              <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
+                SKILLS
+              </p>
+              <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+                My Skills
+              </h1>
+              <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
+                I build and run cloud infrastructure across AWS, Google Cloud and Azure, with Kubernetes, Terraform, CI/CD and observability doing the heavy lifting.
+              </h2>
+            </div>
+            <LottiePlayer
+              src="/lottie/cloud-sync.json"
+              className="hidden lg:block h-64 w-48 shrink-0 mr-[12%] staggered-reveal"
+            />
           </div>
           <div className="mt-12 grid gap-x-16 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
             {SKILLS.map(({ title, items }) => (

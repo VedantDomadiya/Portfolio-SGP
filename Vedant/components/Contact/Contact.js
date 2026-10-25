@@ -5,6 +5,7 @@ import Fade from "react-reveal/Fade";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import mail from "./mailer";
+import LottiePlayer from "@/components/LottiePlayer/LottiePlayer";
 import styles from "./Contact.module.scss";
 import { MENULINKS, SOCIAL_LINKS } from "../../constants";
 
@@ -264,6 +265,10 @@ const Contact = () => {
       <div>
         <Toaster toastOptions={toastOptions} />
       </div>
+      <LottiePlayer
+        src="/lottie/paper-plane.json"
+        className="pointer-events-none absolute right-[4%] top-[42%] hidden xl:block h-48 w-48 2xl:right-[10%]"
+      />
       <div className="section-container flex flex-col justify-center">
         <div className="flex flex-col contact-wrapper">
           <div className="flex flex-col">

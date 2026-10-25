@@ -70,28 +70,28 @@ export const RESUME_URL =
 
 export const BOOKING_URL = "https://topmate.io/vedant_domadiya";
 
-// Header music player. Spotify tracks use the official embed (full track for listeners
-// signed in to Spotify, a 30-second preview otherwise); "src" tracks are self-hosted files.
-// Only add self-hosted audio you have the rights to publish.
+// Header music button: one click plays, the next pauses; tracks shuffle and roll on
+// automatically. Only self-hosted audio we're licensed to publish goes here.
 export const PLAYLIST = [
-  {
-    id: "shoot-to-thrill",
-    title: "Shoot to Thrill",
-    artist: "AC/DC",
-    uri: "spotify:track:0C80GCp0mMuBzLf3EAXqxv",
-  },
-  {
-    id: "feel-it",
-    title: "Feel It",
-    artist: "d4vd",
-    uri: "spotify:track:3SAga35lAPYdjj3qyfEsCF",
-  },
-  {
-    id: "site-theme",
-    title: "Site theme",
-    artist: "Plays in full for everyone",
-    src: "/sounds/song.mp3",
-  },
+  { title: "Exhilarate", artist: "Kevin MacLeod", src: "/sounds/playlist/exhilarate.m4a" },
+  { title: "Ready Aim Fire", artist: "Kevin MacLeod", src: "/sounds/playlist/ready-aim-fire.m4a" },
+  { title: "Big Rock", artist: "Kevin MacLeod", src: "/sounds/playlist/big-rock.m4a" },
+  { title: "Shiny Tech", artist: "Kevin MacLeod", src: "/sounds/playlist/shiny-tech.m4a" },
+  { title: "Movement Proposition", artist: "Kevin MacLeod", src: "/sounds/playlist/movement-proposition.m4a" },
+  { title: "Site theme", artist: "devfolio", src: "/sounds/song.mp3" },
+];
+
+// CC BY 4.0 requires this credit to stay visible (shown in the footer)
+export const MUSIC_CREDIT = {
+  text: "Music: Exhilarate, Ready Aim Fire, Big Rock, Shiny Tech and Movement Proposition by Kevin MacLeod (incompetech.com)",
+  licenseName: "CC BY 4.0",
+  licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+};
+
+// Songs Vedant loves but can't self-host (copyright): linked, not played
+export const SPOTIFY_PICKS = [
+  { title: "Shoot to Thrill", artist: "AC/DC", url: "https://open.spotify.com/track/0C80GCp0mMuBzLf3EAXqxv" },
+  { title: "Feel It", artist: "d4vd", url: "https://open.spotify.com/track/3SAga35lAPYdjj3qyfEsCF" },
 ];
 
 export const SOCIAL_LINKS = [
