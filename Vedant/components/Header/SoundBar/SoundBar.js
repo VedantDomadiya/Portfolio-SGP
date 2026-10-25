@@ -2,105 +2,104 @@ import { useEffect, useRef, useState } from "react";
 import { PLAYLIST } from "../../../constants";
 
 const NUDGE_KEY = "vd-music-tried";
-const YT_STATE = { ENDED: 0, PLAYING: 1, PAUSED: 2 };
+const FADE_IN = 0.4; // seconds
+const FADE_OUT = 2.5; // seconds, at the end of a clip
+const STOP_FADE = 0.5; // seconds, when the visitor stops the music
 
-// Loads YouTube's IFrame API once and resolves with a player mounted in `host`.
-// Uses the privacy-enhanced (no-cookie) host.
-const createYouTubePlayer = (host, videoId, onStateChange) =>
-  new Promise((resolve) => {
-    const create = () => {
-      const el = document.createElement("div");
-      host.appendChild(el);
-      new window.YT.Player(el, {
-        host: "https://www.youtube-nocookie.com",
-        width: "100%",
-        height: "100%",
-        videoId,
-        playerVars: { playsinline: 1, rel: 0, controls: 0, disablekb: 1 },
-        events: {
-          onReady: (e) => resolve(e.target),
-          onStateChange: (e) => onStateChange(e.data),
-        },
-      });
-    };
+// Random order without repeats until every track has played once.
+const shuffle = (items) => {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+};
 
-    if (window.YT?.Player) return create();
-    const previous = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      previous?.();
-      create();
-    };
-    const script = document.createElement("script");
-    script.src = "https://www.youtube.com/iframe_api";
-    script.async = true;
-    document.body.appendChild(script);
-  });
-
-// Play -> the next song's chosen section; press again -> stop. The next press plays
-// the following song. A section that reaches its end simply stops.
+// Press = play a random track; press again = fade out and stop. Clip tracks fade out
+// after `clip` seconds and the next random track starts on its own. Volume fades use
+// a Web Audio gain node because iOS Safari ignores audio.volume.
 const SoundBar = () => {
   const audioRef = useRef(null);
-  const ytHostRef = useRef(null);
-  const ytPlayerRef = useRef(null);
-  const ytPromiseRef = useRef(null);
-  const indexRef = useRef(-1);
-  const audioTimerRef = useRef(null);
-  const [track, setTrack] = useState(null);
+  const ctxRef = useRef(null);
+  const gainRef = useRef(null);
+  const queueRef = useRef([]);
+  const timersRef = useRef([]);
+  const lastRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [track, setTrack] = useState(null);
   const [needsNudge, setNeedsNudge] = useState(false);
 
   useEffect(() => {
     try {
       setNeedsNudge(localStorage.getItem(NUDGE_KEY) !== "1");
     } catch (e) {}
-    return () => clearTimeout(audioTimerRef.current);
+    return () => timersRef.current.forEach(clearTimeout);
   }, []);
 
-  const firstYouTubeId = PLAYLIST.find((t) => t.youtubeId)?.youtubeId;
+  const clearTimers = () => {
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
+  };
 
-  // Prepare the YouTube player on hover/focus/touch so the click can start it instantly
-  const warmUp = () => {
-    if (ytPromiseRef.current || !firstYouTubeId) return ytPromiseRef.current;
-    ytPromiseRef.current = createYouTubePlayer(
-      ytHostRef.current,
-      firstYouTubeId,
-      (state) => {
-        if (state === YT_STATE.PLAYING) setIsPlaying(true);
-        if (state === YT_STATE.PAUSED || state === YT_STATE.ENDED) setIsPlaying(false);
-      }
-    ).then((player) => (ytPlayerRef.current = player));
-    return ytPromiseRef.current;
+  // Must run inside the click handler: browsers only allow audio after a user gesture
+  const ensureAudioGraph = () => {
+    if (ctxRef.current) return;
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioContext();
+    const gain = ctx.createGain();
+    ctx.createMediaElementSource(audioRef.current).connect(gain).connect(ctx.destination);
+    ctxRef.current = ctx;
+    gainRef.current = gain;
+  };
+
+  const rampTo = (value, seconds) => {
+    const { gain } = gainRef.current;
+    const now = ctxRef.current.currentTime;
+    gain.cancelScheduledValues(now);
+    gain.setValueAtTime(gain.value, now);
+    gain.linearRampToValueAtTime(value, now + seconds);
+  };
+
+  const nextTrack = () => {
+    if (!queueRef.current.length) {
+      let queue = shuffle(PLAYLIST);
+      // don't play the same track twice in a row across reshuffles
+      if (queue.length > 1 && queue[0] === lastRef.current) queue.push(queue.shift());
+      queueRef.current = queue;
+    }
+    return queueRef.current.shift();
+  };
+
+  const play = (next) => {
+    clearTimers();
+    const audio = audioRef.current;
+    setTrack(next);
+    lastRef.current = next;
+    audio.src = next.src;
+    audio.currentTime = 0;
+    gainRef.current.gain.setValueAtTime(0, ctxRef.current.currentTime);
+    audio
+      .play()
+      .then(() => rampTo(1, FADE_IN))
+      .catch(() => setIsPlaying(false));
+
+    if (next.clip) {
+      // fade out over the last FADE_OUT seconds of the clip, then move on
+      timersRef.current.push(
+        setTimeout(() => rampTo(0, FADE_OUT), (next.clip - FADE_OUT) * 1000),
+        setTimeout(() => play(nextTrack()), next.clip * 1000)
+      );
+    }
   };
 
   const stop = () => {
-    ytPlayerRef.current?.pauseVideo();
-    audioRef.current.pause();
-    clearTimeout(audioTimerRef.current);
+    clearTimers();
+    rampTo(0, STOP_FADE);
+    timersRef.current.push(
+      setTimeout(() => audioRef.current.pause(), STOP_FADE * 1000)
+    );
     setIsPlaying(false);
-  };
-
-  const playSection = async (next) => {
-    setTrack(next);
-    if (next.youtubeId) {
-      setIsPlaying(true); // show the player card right away
-      const options = {
-        videoId: next.youtubeId,
-        startSeconds: next.start,
-        endSeconds: next.end,
-      };
-      if (ytPlayerRef.current) ytPlayerRef.current.loadVideoById(options);
-      else (await warmUp()).loadVideoById(options);
-    } else {
-      const audio = audioRef.current;
-      audio.src = next.src;
-      audio.currentTime = next.start;
-      audio.play().catch(() => setIsPlaying(false));
-      clearTimeout(audioTimerRef.current);
-      audioTimerRef.current = setTimeout(
-        () => audio.pause(),
-        (next.end - next.start) * 1000
-      );
-    }
   };
 
   const handleClick = () => {
@@ -111,12 +110,13 @@ const SoundBar = () => {
       } catch (e) {}
     }
 
-    if (isPlaying) return stop();
-    indexRef.current = (indexRef.current + 1) % PLAYLIST.length;
-    playSection(PLAYLIST[indexRef.current]);
-  };
+    ensureAudioGraph();
+    if (ctxRef.current.state === "suspended") ctxRef.current.resume();
 
-  const showCard = isPlaying && !!track?.youtubeId;
+    if (isPlaying) return stop();
+    setIsPlaying(true);
+    play(nextTrack());
+  };
 
   return (
     <div className="relative flex items-center">
@@ -133,9 +133,6 @@ const SoundBar = () => {
           isPlaying ? "play" : ""
         }`}
         onClick={handleClick}
-        onPointerEnter={warmUp}
-        onFocus={warmUp}
-        onTouchStart={warmUp}
         aria-label={
           isPlaying && track
             ? `Stop music (${track.title} by ${track.artist})`
@@ -147,36 +144,11 @@ const SoundBar = () => {
         <span />
         <span />
       </button>
-
-      {/* YouTube's API terms require the player to be visible while it plays */}
-      <div
-        className={`fixed bottom-4 right-4 z-50 overflow-hidden rounded-2xl bg-gray-dark-4 shadow-2xl outline outline-1 outline-gray-dark-1 transition-all duration-500 ${
-          showCard
-            ? "visible translate-y-0 opacity-100"
-            : "invisible pointer-events-none translate-y-6 opacity-0"
-        }`}
-      >
-        <div className="flex items-center justify-between gap-4 px-3 py-2">
-          <p className="font-mono text-xs text-gray-light-3">
-            ♪ {track?.title} · {track?.artist}
-          </p>
-          <button
-            type="button"
-            className="link text-lg leading-none text-gray-light-3 hover:text-white"
-            onClick={stop}
-            aria-label="Stop music"
-          >
-            ×
-          </button>
-        </div>
-        <div ref={ytHostRef} className="h-[200px] w-[min(356px,calc(100vw-2rem))]" />
-      </div>
-
       <audio
         ref={audioRef}
         preload="none"
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
+        // full-length tracks roll into the next random one when they end
+        onEnded={() => isPlaying && play(nextTrack())}
       />
     </div>
   );

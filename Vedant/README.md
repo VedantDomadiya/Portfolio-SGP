@@ -38,6 +38,6 @@ Based on [devfolio](https://github.com/shubh73/devfolio) by Shubh Porwal (MIT).
   [letter to paper plane](https://lottiefiles.com/free-animation/letter-turns-into-paper-plane-and-flies-away-NmNBTibGSk),
   [cup of coffee](https://lottiefiles.com/free-animation/cup-of-coffee-cnMpFnUDxV),
   [mouse scroll](https://lottiefiles.com/free-animation/mouse-scroll-C4qcXXec3s).
-- Music button (`PLAYLIST` in `constants.js`): each press plays the next song's chosen section. Commercial
-  songs go through YouTube's official embed (a small player card shows while playing, as YouTube's API terms
-  require); never commit commercial audio files to this public repo.
+- Music button (`PLAYLIST` in `constants.js`): random track per press, `clip` tracks fade out after N seconds and
+  roll into the next one, others play in full. Only commit audio licensed for public web streaming: this repo is
+  public, so any file here is downloadable by anyone.

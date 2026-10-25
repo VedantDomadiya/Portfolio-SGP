@@ -70,32 +70,14 @@ export const RESUME_URL =
 
 export const BOOKING_URL = "https://topmate.io/vedant_domadiya";
 
-// Header music button. Each press of "play" starts the NEXT song's chosen section
-// (start/end in seconds); pressing again stops it. Commercial songs play through
-// YouTube's official embed, which must stay visible while playing (YouTube API terms),
-// so a small player card shows only during playback. Never self-host commercial songs.
+// Header music button: plays a random track; `clip` tracks fade out after `clip`
+// seconds and the next random track starts automatically; tracks without `clip`
+// play in full. Only add audio you're licensed to publish on a public website
+// (a store purchase is a personal-listening licence, not a streaming one).
 export const PLAYLIST = [
-  {
-    title: "Back in Black",
-    artist: "AC/DC",
-    youtubeId: "9vWNauaZAgg", // AC/DC - Topic (album audio, 4:15)
-    start: 0,
-    end: 20,
-  },
-  {
-    title: "Feel It",
-    artist: "d4vd",
-    youtubeId: "3hgabcFcp4A", // d4vd - Topic (album audio, 2:38)
-    start: 0,
-    end: 30,
-  },
-  {
-    title: "Site theme",
-    artist: "devfolio",
-    src: "/sounds/song.mp3",
-    start: 0,
-    end: 30,
-  },
+  { title: "Site theme", artist: "devfolio", src: "/sounds/song.mp3" },
+  // Example of a 30-second clip track:
+  // { title: "My Track", artist: "Artist", src: "/sounds/my-track.mp3", clip: 30 },
 ];
 
 export const SOCIAL_LINKS = [
